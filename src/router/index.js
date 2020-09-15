@@ -1,14 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import Home from '../views/Shop.vue'
+import CategoryShow from '../views/CategoryShow'
 Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: '/shop',
+    name: 'Shop',
     component: Home
+  },
+  {
+    path: '/shop/:category',
+    name: 'category',
+    component: CategoryShow,
+    props: true
   },
   {
     path: '/about',
