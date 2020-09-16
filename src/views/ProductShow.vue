@@ -3,25 +3,24 @@
     <div class="">
         <Basket/>
         <h1> {{ product.name }}</h1>
-        <h4>{{product.price}}</h4>
+        <h2>{{product.price + '$'}}</h2>
         <p>
           description in future
         </p>
       </div>
-      <button :key="product.id"
-       @click="addProduct(product)" :disabled="product.total == 0" name="button" >
-         push
-     </button>
+      <BuyProductButton :product="product"/>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import Basket from '@/components/Basket'
+import BuyProductButton from '@/components/BuyProductButton'
 
 export default {
   components: {
-    Basket
+    Basket,
+    BuyProductButton
   },
   props: {
     product: {

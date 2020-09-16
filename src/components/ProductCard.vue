@@ -11,28 +11,22 @@
        <h2 class="sold-out"> SOLD OUT </h2>
      </template>
    </span>
-   <button :key="product.id"
-    @click="addProduct(product)" :disabled="product.total == 0" name="button" >
-      push
-  </button>
+   <BuyProductButton :product="product"/>
   </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import BuyProductButton from '@/components/BuyProductButton'
 export default {
+  components: {
+    BuyProductButton
+  },
   props: {
     product: {
       type: Object,
       required: true
     }
   },
-  methods: {
-    ...mapActions(['addProduct'])
-  },
-  computed: {
-
-  }
 }
 </script>
 
