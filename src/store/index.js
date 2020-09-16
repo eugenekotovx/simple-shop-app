@@ -8,37 +8,41 @@ export default new Vuex.Store({
     shop:[{
             category: 'art',
             products: [
-              { id: '1', name: 'Art one', price: 5, },
-              { id: '2', name: 'Art two', price: 15, }
+              { id: '1', name: 'Art one', price: 5, total: 7},
+              { id: '2', name: 'Art two', price: 15, total: 1}
             ]
           },
           {
             category: 'book',
             products: [
-              { id: '3', name: 'Book three', price: 3, }
+              { id: '3', name: 'Book three', price: 3, total: 5}
             ]
           },
           {
             category: 'Music',
             products: [
-              { id: '4', name: 'Music Album four', price: 3, }
+              { id: '4', name: 'Music Album four', price: 3, total: 5 }
             ]
           }],
     basket: [],
     basketCounter: 0,
-    basketTotalPrice: 0
+    basketTotalPrice: 0,
+    product: {}
   },
   mutations: {
     ADD_PRODUCT(state, item) {
-      let multipleItem = state.basket.find(product => product.id == item.id)
-      if (multipleItem) {
-        multipleItem.count++
-        multipleItem.totalItemPrice = multipleItem.price * multipleItem.count
-      } else {
-        state.basket.push(item);
+      if (item.total !== 0) {
+        let multipleItem = state.basket.find(product => product.id == item.id)
+        item.total --
+        if (multipleItem) {
+          multipleItem.count++
+          multipleItem.totalItemPrice = multipleItem.price * multipleItem.count
+        } else {
+          state.basket.push(item);
 
-        Vue.set(item, 'count', 1)
-        Vue.set(item, 'totalItemPrice', item.price)
+          Vue.set(item, 'count', 1)
+          Vue.set(item, 'totalItemPrice', item.price)
+        }
       }
     },
     INCREMENT_COUNT(state, item) {

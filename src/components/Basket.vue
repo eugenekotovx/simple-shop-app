@@ -1,12 +1,10 @@
 <template>
   <div class="basket">
     <div class="basket__wrapper">
-      <button @click="openBusket= !openBusket" type="button" name="button">My Basket</button>
+      <button @click="openBusket=!openBusket" type="button" name="button">My Basket</button>
       <div v-if="openBusket">
-
-
-
-        <h2 v-for="(basketItem, index) in this.$store.state.basket"
+        <h2
+        v-for="(basketItem, index) in basket"
         :key="index"
         >
         <h2 v-if="basketItem.count != 0">
@@ -36,7 +34,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['basket', 'basketTotalPrice']),
+    ...mapState(['basket']),
     ...mapGetters(['basketTotalPrice'])
   },
   methods: {

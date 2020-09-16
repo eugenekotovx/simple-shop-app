@@ -7,9 +7,10 @@
             {{ category.category }}
         </h1>
        </router-link>
-      <h3 v-for="product in category.products"  :key="product.id">
+      <div v-for="product in category.products"  :key="product.id">
+        
         <ProductCard :product="product"/>
-      </h3>
+      </div>
     </div>
 
   </div>
@@ -18,7 +19,7 @@
 
 <script>
 
-import {mapActions, mapState} from 'vuex'
+import { mapState} from 'vuex'
 import ProductCard from '@/components/ProductCard'
 import Basket from '@/components/Basket'
 
@@ -31,9 +32,6 @@ export default {
   computed: {
     ...mapState(['shop'])
   },
-  methods: {
-    ...mapActions(['addProduct']),
-  }
 }
 </script>
 <style media="screen">
