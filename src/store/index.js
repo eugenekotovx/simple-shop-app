@@ -54,6 +54,7 @@ export default new Vuex.Store({
         state.basket = state.basket.filter((basketItem) => basketItem.id !== item.id)
       }
       item.count--
+      item.total ++
       item.totalItemPrice = item.price * item.count
     },
   },

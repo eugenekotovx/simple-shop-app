@@ -3,17 +3,18 @@
     <router-link :to="{ name: 'product-show', params: { id : product.id, product: product }}">
       <h1> {{ product.id}} {{ product.name }}</h1>
       <h2> PRICE: {{ product.price + '$' }}</h2>
-      <span v-if="product.count">
-        in basket: <span>{{product.count}} </span>
-        <template v-if="product.total == 0">
-          <h2 class="sold-out"> SOLD OUT </h2>
-        </template>
-      </span>
-      <button :key="product.id"
-       @click="addProduct(product)" :disabled="product.total == 0" name="button" >
-         push
-     </button>
+
    </router-link>
+   <span v-if="product.count">
+     in basket: <span>{{product.count}} </span>
+     <template v-if="product.total == 0">
+       <h2 class="sold-out"> SOLD OUT </h2>
+     </template>
+   </span>
+   <button :key="product.id"
+    @click="addProduct(product)" :disabled="product.total == 0" name="button" >
+      push
+  </button>
   </div>
 </template>
 
@@ -38,5 +39,9 @@ export default {
 <style lang="css" scoped >
   .sold-out {
     color: red;
+  }
+  .product-card {
+    border: 3px solid blue;
+    margin-bottom: 10px;
   }
 </style>
