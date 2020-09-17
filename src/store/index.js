@@ -35,19 +35,9 @@ export default new Vuex.Store({
       state.category = category
     },
     ADD_PRODUCT(state, item) {
-      if (item.total !== 0) {
-        let multipleItem = state.basket.find(product => product.id == item.id)
-        item.total --
-        if (multipleItem) {
-          multipleItem.count++
-          multipleItem.totalItemPrice = multipleItem.price * multipleItem.count
-        } else {
-          state.basket.push(item);
-
-          Vue.set(item, 'count', 1)
-          Vue.set(item, 'totalItemPrice', item.price)
-        }
-      }
+      state.basket.push(item)
+      Vue.set(item, 'count', 1)
+      Vue.set(item, 'totalItemPrice', item.price)
     },
     UPDATE_COUNT(state, item) {
       state.item = item
@@ -56,13 +46,23 @@ export default new Vuex.Store({
   actions: {
     getCategory({ commit, state }, name) {
       var category = state.shop.find(cat => cat.category === name)
-
       if (category) {
         commit('GET_CATEGORY', category)
       }
     },
-    addProduct({commit}, item) {
-      commit('ADD_PRODUCT', item)
+    addProduct({commit, state}, item) {
+      if (item.total !== 0) {
+        let multipleItem = state.basket.find(product => product.id == item.id)
+        item.total --
+        if (multipleItem) {
+          multipleItem.count++
+          multipleItem.totalItemPrice = multipleItem.price * multipleItem.count
+          item = multipleItem
+          commit('UPDATE_COUNT', item)
+        } else {
+          commit('ADD_PRODUCT', item)
+        }
+      }
     },
     incrementCount({commit}, item) {
       if (item.total !== 0) {
