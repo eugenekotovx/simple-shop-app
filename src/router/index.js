@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../views/Shop.vue'
 import CategoryShow from '../views/CategoryShow'
 import ProductShow from '../views/ProductShow'
-
 Vue.use(VueRouter)
 
   const routes = [

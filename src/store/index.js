@@ -27,7 +27,7 @@ export default new Vuex.Store({
     basket: [],
     basketCounter: 0,
     basketTotalPrice: 0,
-    product: {}
+    product: {} // for productShow
   },
   mutations: {
     ADD_PRODUCT(state, item) {
@@ -45,20 +45,8 @@ export default new Vuex.Store({
         }
       }
     },
-    INCREMENT_COUNT(state, item) {
-      if (item.total !== 0) {
-      item.count++
-      item.totalItemPrice = item.price * item.count
-      item.total --
-      }
-    },
-    DECREMENT_COUNT(state, item) {
-      if (item.count === 1) {
-        state.basket = state.basket.filter((basketItem) => basketItem.id !== item.id)
-      }
-      item.count--
-      item.total ++
-      item.totalItemPrice = item.price * item.count
+    UPDATE_COUNT(state, item) {
+      state.item = item
     },
   },
   actions: {
@@ -66,12 +54,23 @@ export default new Vuex.Store({
       commit('ADD_PRODUCT', item)
     },
     incrementCount({commit}, item) {
-      commit('INCREMENT_COUNT', item)
+      if (item.total !== 0) {
+        item.count++
+        item.totalItemPrice = item.price * item.count // add in utils
+        item.total--
+        commit('UPDATE_COUNT', item)
+      }
     },
-    decrementCount({commit}, item) {
-      commit('DECREMENT_COUNT', item)
-    }
-  },
+    decrementCount({commit, state}, item) {
+      if (item.count === 1) {
+        state.basket = state.basket.filter((basketItem) => basketItem.id !== item.id)
+        }
+        item.count--
+        item.total ++
+        item.totalItemPrice = item.price * item.count // add in utils
+        commit('UPDATE_COUNT', item)
+      }
+    },
   getters: {
     basketTotalPrice: state =>  {
       let totalPrice = 0
@@ -79,6 +78,9 @@ export default new Vuex.Store({
         totalPrice += item.totalItemPrice
       })
       return totalPrice + '$'
+    },
+    getProductById: state => id => {
+      return state.product.find(product => product.id === id)
     }
   },
   modules: {
