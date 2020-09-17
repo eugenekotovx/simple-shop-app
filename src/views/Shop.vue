@@ -3,7 +3,7 @@
     <Basket/>
     <div class="shop__wrapper">
     <div v-for="category in shop"  :key="category.name">
-      <router-link :to="{ name: 'category', params: {category : category.category, products: category.products }}">
+      <router-link :to="{ name: 'category-show', params: {category : category.category, products: category.products }}">
         <h1 class="shop__category-title">
             {{ category.category }}
         </h1>

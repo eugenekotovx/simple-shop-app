@@ -6,15 +6,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     shop:[{
-            category: 'art',
-            products: [
+           category: 'art',
+           products: [
               { id: '1', name: 'Art one', price: 5, total: 7},
               { id: '2', name: 'Art two', price: 15, total: 1}
             ]
           },
           {
-            category: 'book',
-            products: [
+           category: 'book',
+           products: [
               { id: '3', name: 'Book three', price: 3, total: 5}
             ]
           },
@@ -27,9 +27,13 @@ export default new Vuex.Store({
     basket: [],
     basketCounter: 0,
     basketTotalPrice: 0,
-    product: {} // for productShow
+    product: {}, // for productShow
+    category: {} // for categoryShow
   },
   mutations: {
+    GET_CATEGORY(state, category) {
+      state.category = category
+    },
     ADD_PRODUCT(state, item) {
       if (item.total !== 0) {
         let multipleItem = state.basket.find(product => product.id == item.id)
@@ -50,14 +54,21 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    getCategory({ commit, state }, name) {
+      var category = state.shop.find(cat => cat.category === name)
+
+      if (category) {
+        commit('GET_CATEGORY', category)
+      }
+    },
     addProduct({commit}, item) {
       commit('ADD_PRODUCT', item)
     },
     incrementCount({commit}, item) {
       if (item.total !== 0) {
         item.count++
-        item.totalItemPrice = item.price * item.count // add in utils
         item.total--
+        item.totalItemPrice = item.price * item.count
         commit('UPDATE_COUNT', item)
       }
     },
@@ -67,7 +78,7 @@ export default new Vuex.Store({
         }
         item.count--
         item.total ++
-        item.totalItemPrice = item.price * item.count // add in utils
+        item.totalItemPrice = item.price * item.count
         commit('UPDATE_COUNT', item)
       }
     },
@@ -81,7 +92,7 @@ export default new Vuex.Store({
     },
     getProductById: state => id => {
       return state.product.find(product => product.id === id)
-    }
+    },
   },
   modules: {
   },

@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
-    <h1> {{ $route.params.category }} in future</h1>
-    <div class="" v-for="product in $route.params.products"  :key="product.id">
+    <h1> {{ category.category }} in future</h1>
+    <div class="" v-for="product in category.products"  :key="product.id">
       <ProductCard :product="product"/>
     </div>
   </div>
@@ -12,11 +12,14 @@
 
 <script>
 import ProductCard from '@/components/ProductCard'
+import {mapState} from 'vuex'
+
 export default {
   components:{
     ProductCard
   },
-  props: {
+  computed: {
+    ...mapState(['category'])
   }
 }
 </script>

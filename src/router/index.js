@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Shop.vue'
 import CategoryShow from '../views/CategoryShow'
 import ProductShow from '../views/ProductShow'
+import store from '@/store/index'
 Vue.use(VueRouter)
 
   const routes = [
@@ -13,9 +14,24 @@ Vue.use(VueRouter)
   },
   {
     path: '/shop/:category',
-    name: 'category',
+    name: 'category-show',
     component: CategoryShow,
-    props: true
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+      .dispatch('getCategory', routeTo.params.category)
+      .then(category => {
+        routeTo.params.category = category
+        next()
+      })
+      .catch(error => {
+        if (error.response && error.response.status == 404) {
+          console.log(error.response)
+        } else {
+          next({ name: 'shop' })
+        }
+      })
+    }
   },
   {
     path: '/shop/:category/:id',
