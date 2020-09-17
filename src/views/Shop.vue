@@ -2,9 +2,9 @@
   <div>
     <Basket/>
     <div class="shop__wrapper">
-    <div v-for="category in shop"  :key="category.name">
+    <div v-for="category in shop"  :key="category.name" class="shop__category-title">
       <router-link :to="{ name: 'category-show', params: {category : category.category, products: category.products }}">
-        <h1 class="shop__category-title">
+        <h1 >
             {{ category.category }}
         </h1>
        </router-link>
@@ -44,8 +44,13 @@ export default {
         justify-content: space-between;
       }
       &__category-title {
-        color: black;
+        color: blue;
         text-decoration: none;
+        a {
+          text-decoration: none;
+          color: blue;
+        }
+
       }
   }
 

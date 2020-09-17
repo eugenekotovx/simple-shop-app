@@ -52,6 +52,5 @@ export default {
       right: 0%;
       transition: .3s;
     }
-
   }
 </style>

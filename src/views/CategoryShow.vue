@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <h1> {{ category.category }} in future</h1>
-    <div class="" v-for="product in category.products"  :key="product.id">
+    <div class="category" v-for="product in category.products"  :key="product.id">
       <ProductCard :product="product"/>
     </div>
   </div>
@@ -25,5 +25,7 @@ export default {
 </script>
 
 <style lang="css" scoped >
-
+  .category {
+    color: blue;
+  }
 </style>
