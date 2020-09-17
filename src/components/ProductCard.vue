@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="product-card -shadow">
     <router-link :to="{ name: 'product-show', params: { id : product.id, product: product }}">
-      <h1> {{ product.id}} {{ product.name }}</h1>
-      <h2> PRICE: {{ product.price + '$' }}</h2>
+      <h3> {{ product.id}} {{ product.name }}</h3>
+      <h3> PRICE: {{ product.price + '$' }}</h3>
 
    </router-link>
    <span v-if="product.count">
@@ -35,7 +35,6 @@ export default {
     color: red;
   }
   .product-card {
-    border: 3px solid blue;
     margin-bottom: 10px;
   }
 </style>

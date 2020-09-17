@@ -1,18 +1,16 @@
 <template>
-  <div class="">
+  <div>
     <Basket/>
-    <div class="" v-for="category in shop"  :key="category.name">
+    <div class="shop__wrapper">
+    <div v-for="category in shop"  :key="category.name">
       <router-link :to="{ name: 'category', params: {category : category.category, products: category.products }}">
-        <h1>
+        <h1 class="shop__category-title">
             {{ category.category }}
         </h1>
        </router-link>
-      <div v-for="product in category.products"  :key="product.id">
-        
-        <ProductCard :product="product"/>
-      </div>
-    </div>
 
+     </div>
+    </div>
   </div>
 
 </template>
@@ -20,31 +18,35 @@
 <script>
 
 import { mapState} from 'vuex'
-import ProductCard from '@/components/ProductCard'
 import Basket from '@/components/Basket'
 
 export default {
   name: 'Shop',
   components: {
-    Basket,
-    ProductCard
+    Basket
   },
   computed: {
     ...mapState(['shop'])
   },
 }
 </script>
-<style media="screen">
-  .shop-category {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid green;
-    border-radius: 25px;
-    margin-bottom: 5px
-  }
+<style media="screen" lang="scss">
+
   .btn {
     height: 24px;
   }
+  .shop {
+      &__wrapper {
+        max-width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      &__category-title {
+        color: black;
+        text-decoration: none;
+      }
+  }
+
 </style>

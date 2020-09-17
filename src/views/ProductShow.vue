@@ -26,7 +26,7 @@ export default {
     product: {
       type: Object,
       required: true
-    }
+    },
   },
   methods: {
     ...mapActions(['addProduct'])

@@ -46,8 +46,11 @@ export default new Vuex.Store({
       }
     },
     INCREMENT_COUNT(state, item) {
+      if (item.total !== 0) {
       item.count++
       item.totalItemPrice = item.price * item.count
+      item.total --
+      }
     },
     DECREMENT_COUNT(state, item) {
       if (item.count === 1) {
