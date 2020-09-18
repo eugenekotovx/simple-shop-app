@@ -43,7 +43,7 @@ export default {
     ...mapGetters(['basketTotalPrice'])
   },
   methods: {
-    ...mapActions(['incrementCount','decrementCount'])
+    ...mapActions(['@/store/modules/shop/incrementCount','@/store/modules/shop/decrementCount'])
   }
 }
 </script>

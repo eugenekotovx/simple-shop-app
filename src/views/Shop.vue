@@ -2,7 +2,7 @@
   <div>
     <Basket/>
     <div class="shop__wrapper">
-    <div v-for="category in shop"  :key="category.name" class="shop__category-title">
+    <div v-for="category in shop.shop"  :key="category.name" class="shop__category-title">
       <router-link :to="{ name: 'category-show', params: {category : category.category, products: category.products }}">
         <h1 >
             {{ category.category }}
@@ -17,7 +17,7 @@
 
 <script>
 
-import { mapState} from 'vuex'
+import { mapState } from 'vuex'
 import Basket from '@/components/Basket'
 
 export default {
