@@ -37,7 +37,22 @@ Vue.use(VueRouter)
     path: '/shop/:category/:id',
     name: 'product-show',
     component: ProductShow,
-    props: true
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+      .dispatch('getProduct', routeTo.params.product)
+      .then(product => {
+        routeTo.params.product = product
+        next()
+      })
+      .catch(error => {
+        if (error.response && error.response.status == 404) {
+          console.log(error.response)
+        } else {
+          next({ name: 'shop' })
+        }
+      })
+    }
   },
   {
     path: '/basket',

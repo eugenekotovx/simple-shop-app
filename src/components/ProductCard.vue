@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="product-card -shadow">
-    <router-link :to="{ name: 'product-show', params: { id : product.id, product: product }}">
+    <router-link :to="{ name: 'product-show', params: { category: category, id : product.id, product: product }}">
       <h3> {{ product.id}} {{ product.name }}</h3>
       <h3> PRICE: {{ product.price + '$' }}</h3>
 
@@ -24,6 +24,10 @@ export default {
   props: {
     product: {
       type: Object,
+      required: true
+    },
+    category: {
+      type: String,
       required: true
     }
   },
