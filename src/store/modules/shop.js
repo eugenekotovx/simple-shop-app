@@ -2,7 +2,8 @@
 
 export const state = {
   namespaced: true,
-  shop:[{
+  shop:[
+        {
          category: 'art',
          products: [
             { id: 1, name: 'Art one', price: 5, total: 7},
@@ -20,7 +21,8 @@ export const state = {
           products: [
             { id: 4, name: 'Music Album four', price: 3, total: 5 }
           ]
-        }],
+        }
+      ],
         product: {}, // for productShow
         category: {} // for categoryShow
 }
@@ -30,22 +32,30 @@ export const mutations = {
     state.category = category
   },
   GET_PRODUCT(state, product) {
+    //state.category = category
     state.product = product
   }
 
 }
 
 export const actions = {
-  getCategory({ commit, state }, name) {
-    var category = state.shop.find(cat => cat.category === name)
+  getCategory({ commit, getters }, name) {
+    var category = getters.getCategoryByName(name)
     if (category) {
       commit('GET_CATEGORY', category)
     }
   },
-  getProduct({commit, state}, product) {
-    var prod = state.category.products.find(item => item === product)
+  getProduct({commit, state}, productId) {
+    var prod = state.category.products.find(item => item.id === productId)
     if (prod) {
       commit('GET_PRODUCT', prod)
     }
   }
+}
+
+
+export const getters = {
+  getCategoryByName: state => category => {
+    return state.shop.find(cat => cat.category === category)
+  },
 }

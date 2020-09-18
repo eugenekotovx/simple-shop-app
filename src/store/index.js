@@ -10,9 +10,4 @@ export default new Vuex.Store({
     shop,
     basket
   },
-  getters: {
-    getProductById: state => id => {
-      return state.product.find(product => product.id === id)
-    },
-  },
 })

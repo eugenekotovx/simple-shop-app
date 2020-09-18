@@ -40,8 +40,8 @@ Vue.use(VueRouter)
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
-      .dispatch('getProduct', routeTo.params.product)
-      .then(product => {
+      .dispatch('getProduct', routeTo.params.id)
+      .then( product => {
         routeTo.params.product = product
         next()
       })
