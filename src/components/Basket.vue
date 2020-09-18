@@ -4,7 +4,7 @@
       <button @click="openBusket=!openBusket" type="button" name="button" class="basket__btn">My Basket</button>
       <div v-if="openBusket">
         <h2
-        v-for="(basketItem, index) in basket"
+        v-for="(basketItem, index) in basket.basket"
         :key="index"
         >
         <h2 v-if="basketItem.count != 0" class="basket__price">
@@ -43,7 +43,7 @@ export default {
     ...mapGetters(['basketTotalPrice'])
   },
   methods: {
-    ...mapActions(['@/store/modules/shop/incrementCount','@/store/modules/shop/decrementCount'])
+    ...mapActions(['incrementCount','decrementCount'])
   }
 }
 </script>
