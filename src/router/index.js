@@ -19,9 +19,8 @@ Vue.use(VueRouter)
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
-      .dispatch('getCategory', routeTo.params.category)
-      .then(category => {
-        routeTo.params.category = category
+      .dispatch('getCategory', routeTo.params)
+      .then(() => {
         next()
       })
       .catch(error => {
@@ -31,7 +30,7 @@ Vue.use(VueRouter)
           next({ name: 'shop' })
         }
       })
-    }
+    },
   },
   {
     path: '/shop/:category/:id',
@@ -40,9 +39,8 @@ Vue.use(VueRouter)
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
-      .dispatch('getProduct', routeTo.params.id)
-      .then( product => {
-        routeTo.params.product = product
+      .dispatch('getProduct', routeTo.params)
+      .then(() => { // дописать как в евенте
         next()
       })
       .catch(error => {

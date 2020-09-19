@@ -1,6 +1,8 @@
 <template lang="html">
   <div class="product-card -shadow">
-    <router-link :to="{ name: 'product-show', params: { category: category, id : product.id, product: product }}">
+    <router-link
+    :to="{ name: 'product-show', params: { category: $route.params.category, id : product.id }}"
+    >
       <h3> {{ product.id}} {{ product.name }}</h3>
       <h3> PRICE: {{ product.price + '$' }}</h3>
 
