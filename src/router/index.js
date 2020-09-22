@@ -40,7 +40,7 @@ Vue.use(VueRouter)
     beforeEnter(routeTo, routeFrom, next) {
       store
       .dispatch('getProduct', routeTo.params)
-      .then(() => { // дописать как в евенте
+      .then(() => { 
         next()
       })
       .catch(error => {

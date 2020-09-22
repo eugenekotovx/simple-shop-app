@@ -32,7 +32,6 @@ export const mutations = {
     state.category = category
   },
   GET_PRODUCT(state, product) {
-    //state.category = category
     state.product = product
   }
 }
@@ -45,17 +44,13 @@ export const actions = {
       return category
     }
   },
-  takeProduct({ commit, state }, productId) {
-    var id = Number(productId.id)
-    var prod = state.category.products.find(product => product.id === id)
+   getProduct({ dispatch, commit, getters }, productId ) {
+    dispatch('getCategory', productId)
+    let prod = getters.getProductById(productId)
     if (prod) {
       commit('GET_PRODUCT', prod)
       return prod
     }
-  },
-  async getProduct({ dispatch }, productId ) {
-    await dispatch('getCategory', productId)
-    await dispatch('takeProduct', productId)
   }
 }
 
@@ -65,6 +60,7 @@ export const getters = {
     return state.shop.find(cat => cat.category === category)
   },
   getProductById: state => productId => {
-    return state.category.products.find(product => product.id === productId)
+    let id = Number(productId.id)
+    return state.category.products.find(product => product.id === id)
   }
 }
