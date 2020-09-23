@@ -16,14 +16,17 @@
 </template>
 
 <script>
-
 import { mapState } from 'vuex'
 import Basket from '@/components/Basket'
+
 
 export default {
   name: 'Shop',
   components: {
     Basket
+  },
+  mounted() {
+    this.$store.dispatch('shop/getCategorys')
   },
   computed: {
     ...mapState(['shop'])

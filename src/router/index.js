@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Shop.vue'
+import store from '@/store/index'
 import CategoryShow from '../views/CategoryShow'
 import ProductShow from '../views/ProductShow'
-import store from '@/store/index'
+
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -19,7 +21,7 @@ Vue.use(VueRouter)
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
-      .dispatch('getCategory', routeTo.params)
+      .dispatch('shop/getCategory', routeTo.params)
       .then(() => {
         next()
       })
@@ -39,8 +41,8 @@ Vue.use(VueRouter)
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
-      .dispatch('getProduct', routeTo.params)
-      .then(() => { 
+      .dispatch('shop/getProduct', routeTo.params)
+      .then(() => {
         next()
       })
       .catch(error => {

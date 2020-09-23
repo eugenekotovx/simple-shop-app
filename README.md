@@ -1,4 +1,4 @@
-# chair-shop
+# simple-shop-app
 
 ## Project setup
 ```

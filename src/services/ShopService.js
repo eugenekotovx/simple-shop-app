@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const shopApi = axios.creat({
+const shopApi = axios.create({
   baseURL: `http://localhost:3000`,
   withCredentials: false,
   headers: {
@@ -11,16 +11,10 @@ const shopApi = axios.creat({
 })
 
 export default {
-  getCategorys() {
-    return shopApi.get('/shop')
+  getShopData() {
+    return shopApi.get('/shop/')
   },
   getCategory(name) {
-    return shopApi.get('/shop' + name)
-  },
-  getProducts(category) {
-    return shopApi.get('/shop' + category.products)
-  },
-  getProduct(category, id) {
-     return shopApi.get('/shop' + category.products + id)
+    return shopApi.get('/shop/?category=' + name.category)
   }
 }
