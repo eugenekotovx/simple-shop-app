@@ -2,10 +2,10 @@
   <div>
     <Basket/>
     <div class="shop__wrapper">
-    <div v-for="category in shop.shop"  :key="category.name" class="shop__category-title">
-      <router-link :to="{ name: 'category-show', params: {category : category.category, products: category.products }}">
+    <div v-for="category in categories"  :key="category" class="shop__category-title">
+      <router-link :to="{ name: 'category-show', params: {category : category }}">
         <h1 >
-            {{ category.category }}
+            {{ category }}
         </h1>
        </router-link>
 
@@ -26,10 +26,13 @@ export default {
     Basket
   },
   mounted() {
-    this.$store.dispatch('shop/getCategorys')
+    this.$store.dispatch('shop/getCategories')
   },
   computed: {
-    ...mapState(['shop'])
+    ...mapState(['shop']),
+    categories() {
+      return [...new Set(this.shop.shop.map(item => item.category))]
+    }
   },
 }
 </script>
