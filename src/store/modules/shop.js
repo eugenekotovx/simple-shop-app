@@ -5,12 +5,12 @@ export const namespaced = true;
 export const state = {
   shop:[],
   product: {}, // for productShow
-  category: {} // for categoryShow
+  category: [] // for categoryShow
 }
 
 export const mutations = {
-  SET_CATEGORYS(state, categorys) {
-    state.shop = categorys
+  SET_CATEGORIES(state, categories) {
+    state.shop = categories
   },
   SET_CATEGORY(state, category) {
     state.category = category
@@ -21,52 +21,40 @@ export const mutations = {
 }
 
 export const actions = {
-    getCategorys({ commit }) {
+    getCategories({ commit, state }) {
+      if (state.shop.length) {
+        return state.shop
+      }
       return ShopService.getShopData()
       .then(response => {
-        commit('SET_CATEGORYS', response.data)
+        commit('SET_CATEGORIES', response.data)
       })
       .catch(error => {
         console.log(error)
       })
     },
-    getCategory({ commit, getters }, name) {
-      if (name.category == state.category.category) {
+    getCategory({ commit }, params) {
+      var test = state.category.find(item => item.category == params.category)
+
+      if (test) {
         return state.category
-      }
-
-      var category = getters.getCategoryByName(name.category)
-
-      if (category) {
-        commit('SET_CATEGORY', category)
-        return category
       } else {
-        return ShopService.getCategory(name)
-        .then(response => {
-          commit('SET_CATEGORY', response.data[0])
-          return response.data[0]
+        return ShopService.getCategory(params)
+        .then(category => {
+          commit('SET_CATEGORY', category)
+          return category
         })
       }
   },
-   getProduct({ dispatch, commit, getters }, params ) {
-    dispatch('getCategory', params)
-    .then(() => {
-      let prod = getters.getProductById(params)
-      if (prod) {
-        commit('SET_PRODUCT', prod)
-        return prod
-      }
-    })
-  }
-}
-
-
-export const getters = {
-  getCategoryByName: state => category => {
-    return state.shop.find(cat => cat.category === category)
-  },
-  getProductById: state => params => {
-    let id = Number(params.id)
-    return state.category.products.find(product => product.id === id)
+   getProduct({  commit, state }, params ) {
+     if (params.id == state.product.id) {
+       return state.shop.product
+     } else {
+       return ShopService.getProduct(params)
+       .then(product => {
+         commit('SET_PRODUCT', product)
+         return product
+       })
+     }
   }
 }
