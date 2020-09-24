@@ -1,23 +1,8 @@
 {
-  "shop": [
-    {
-       "category": "art",
-       "products": [
-          { "id": 1, "name": "Art one", "price": 5, "total": 7},
-          { "id": 2, "name": "Art two", "price": 15, "total": 1}
+  "products": [
+          { "category": "art", "id": 1, "name": "Art one", "price": 5, "total": 7},
+          { "category": "art", "id": 2, "name": "Art two", "price": 15, "total": 1},
+          { "category": "book", "id": 3, "name": "Book three", "price": 3, "total": 5},
+          { "category": "Music", "id": 4, "name": "Music Album four", "price": 3, "total": 5 }
         ]
-      },
-      {
-       "category": "book",
-       "products": [
-          { "id": 3, "name": "Book three", "price": 3, "total": 5}
-        ]
-      },
-      {
-        "category": "Music",
-        "products": [
-          { "id": 4, "name": "Music Album four", "price": 3, "total": 5 }
-        ]
-      }
-    ]
 }
