@@ -25,5 +25,8 @@ export default {
     .then(product => {
       return product.data
     })
+  },
+  setOrder(order) {
+    return shopApi.post('/orders', order)
   }
 }
