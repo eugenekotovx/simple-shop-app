@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <Cart/>
-    <form class="order__form" @submit.prevent="createOrder">
+    <form class="order__form" @submit.prevent="createOrder(order)">
       <input type="text" value="" v-model="order.name" placeholder="enter your name">
       <input type="text" value="" v-model="order.lastName" placeholder="enter your last name">
       <input type="text" value="" v-model="order.phoneNumber" placeholder="enter your phone number">
@@ -23,6 +23,10 @@ export default {
     }
   },
   methods: {
+    createOrder(order) {
+
+      this.$store.dispatch('order/getOrder', order)
+    },
     createFreshOrder() {
       const id = Math.floor(Math.random() * 1000000)
 
@@ -34,9 +38,6 @@ export default {
         address: this.address,
         cart: this.$store.state.cart.cart
       }
-    },
-    createOrder() {
-      
     }
   }
 }
