@@ -4,5 +4,7 @@
           { "category": "art", "id": 2, "name": "Art two", "price": 15, "total": 1},
           { "category": "book", "id": 3, "name": "Book three", "price": 3, "total": 5},
           { "category": "Music", "id": 4, "name": "Music Album four", "price": 3, "total": 5 }
-        ]
+        ],
+  "orders": [
+  ]
 }

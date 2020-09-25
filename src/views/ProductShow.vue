@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="">
     <div class="">
-        <Basket/>
+        <Cart/>
         <h1> {{ shop.product.name }}</h1>
         <h2>{{ shop.product.price + '$'}}</h2>
         <p>
@@ -9,18 +9,17 @@
         </p>
       </div>
       <BuyProductButton :product="shop.product"/>
-      {{ $attrs.category }}
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import Basket from '@/components/Basket'
+import Cart from '@/components/Cart'
 import BuyProductButton from '@/components/BuyProductButton'
 
 export default {
   components: {
-    Basket,
+    Cart,
     BuyProductButton
   },
   methods: {

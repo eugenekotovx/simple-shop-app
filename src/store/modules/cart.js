@@ -1,14 +1,13 @@
 import Vue from 'vue'
 
 export const state = {
-   basket: [],
-   basketCounter: 0,
-   basketTotalPrice: 0,
+   cart: [],
+   cartCounter: 0
 }
 
 export const mutations = {
   ADD_PRODUCT(state, item) {
-    state.basket.push(item)
+    state.cart.push(item)
     Vue.set(item, 'count', 1)
     Vue.set(item, 'totalItemPrice', item.price)
   },
@@ -20,13 +19,12 @@ export const mutations = {
 export const actions = {
   addProduct({commit, state}, item) {
     if (item.total !== 0) {
-      let multipleItem = state.basket.find(product => product.id == item.id)
+      let multipleItem = state.cart.find(product => product.id == item.id)
       item.total --
       if (multipleItem) {
         multipleItem.count++
         multipleItem.totalItemPrice = multipleItem.price * multipleItem.count
-        item = multipleItem
-        commit('UPDATE_COUNT', item)
+        commit('UPDATE_COUNT', multipleItem)
       } else {
         commit('ADD_PRODUCT', item)
       }
@@ -42,7 +40,7 @@ export const actions = {
   },
   decrementCount({commit, state}, item) {
     if (item.count === 1) {
-      state.basket = state.basket.filter((basketItem) => basketItem.id !== item.id)
+      state.cart = state.cart.filter((cartItem) => cartItem.id !== item.id)
       }
       item.count--
       item.total ++
@@ -52,9 +50,9 @@ export const actions = {
 }
 
 export const getters = {
-  basketTotalPrice: state =>  {
+  cartTotalPrice: state =>  {
     let totalPrice = 0
-    state.basket.forEach(item => {
+    state.cart.forEach(item => {
       totalPrice += item.totalItemPrice
     })
     return totalPrice + '$'

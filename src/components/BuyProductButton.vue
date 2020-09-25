@@ -4,7 +4,7 @@
    :disabled="product.total == 0"
    name="button"
    class="buy__btn" >
-     Add product in basket
+     Add product in cart
  </button>
 </template>
 

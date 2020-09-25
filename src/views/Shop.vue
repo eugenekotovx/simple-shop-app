@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Basket/>
+    <Cart/>
     <div class="shop__wrapper">
     <div v-for="category in categories"  :key="category" class="shop__category-title">
       <router-link :to="{ name: 'category-show', params: {category : category }}">
@@ -17,13 +17,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import Basket from '@/components/Basket'
+import Cart from '@/components/Cart'
 
 
 export default {
   name: 'Shop',
   components: {
-    Basket
+    Cart
   },
   mounted() {
     this.$store.dispatch('shop/getCategories')

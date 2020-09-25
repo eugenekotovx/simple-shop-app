@@ -45,16 +45,16 @@ export const actions = {
           return category
         })
       }
-  },
-   getProduct({  commit, state }, params ) {
-     if (params.id == state.product.id) {
-       return state.shop.product
-     } else {
-       return ShopService.getProduct(params)
-       .then(product => {
-         commit('SET_PRODUCT', product)
-         return product
-       })
+     },
+     getProduct({  commit, state }, params ) {
+       if (params.id == state.product.id) {
+         return state.shop.product
+       } else {
+         return ShopService.getProduct(params)
+         .then(product => {
+           commit('SET_PRODUCT', product)
+           return product
+          })
+         }
+       }
      }
-  }
-}

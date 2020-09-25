@@ -1,15 +1,15 @@
 <template lang="html">
   <h2>
-    <Basket/>
+    <Cart/>
   </h2>
 </template>
 
 <script>
-import Basket from '@/components/Basket'
+import Cart from '@/components/Cart'
 
 export default {
   components: {
-    Basket
+    Cart
   }
 }
 </script>

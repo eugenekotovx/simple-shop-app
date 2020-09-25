@@ -8,7 +8,7 @@
 
    </router-link>
    <span v-if="product.count">
-     in basket: <span>{{product.count}} </span>
+     in cart: <span>{{product.count}} </span>
      <template v-if="product.total == 0">
        <h2 class="sold-out"> SOLD OUT </h2>
      </template>

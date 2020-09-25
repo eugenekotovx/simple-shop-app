@@ -55,12 +55,12 @@ Vue.use(VueRouter)
     }
   },
   {
-    path: '/basket',
-    name: 'Basket',
+    path: '/cart',
+    name: 'Cart',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/BasketShow.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/CartShow.vue')
   }
 ]
 

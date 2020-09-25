@@ -1,29 +1,29 @@
 <template>
-  <div class="basket">
-    <div class="basket__wrapper">
-      <button @click="openBusket=!openBusket" type="button" name="button" class="basket__btn">My Basket</button>
+  <div class="cart">
+    <div class="cart__wrapper">
+      <button @click="openBusket=!openBusket" type="button" name="button" class="cart__btn">My Cart</button>
       <div v-if="openBusket">
         <h2
-        v-for="(basketItem, index) in basket.basket"
+        v-for="(cartItem, index) in cart.cart"
         :key="index"
         >
-        <h2 v-if="basketItem.count != 0" class="basket__price">
-          {{ basketItem.count }} - {{ basketItem.name }} - {{ basketItem.price + '$' }}
+        <h2 v-if="cartItem.count != 0" class="cart__price">
+          {{ cartItem.count }} - {{ cartItem.name }} - {{ cartItem.price + '$' }}
           <button
           type="button" name="button"
-          @click="decrementCount(basketItem)"
-          class="basket__btn">-</button>
+          @click="decrementCount(cartItem)"
+          class="cart__btn">-</button>
           <button type="button"
           name="button"
-          @click="incrementCount(basketItem)"
-          class="basket__btn">+</button>
+          @click="incrementCount(cartItem)"
+          class="cart__btn">+</button>
         </h2>
         </h2>
       </div>
     </div>
 
     <h1>
-      {{ basketTotalPrice }}
+      {{ cartTotalPrice }}
     </h1>
   </div>
 
@@ -32,15 +32,15 @@
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
 export default {
-  name: 'Basket',
+  name: 'Cart',
   data() {
     return {
       openBusket: true
     }
   },
   computed: {
-    ...mapState(['basket']),
-    ...mapGetters(['basketTotalPrice'])
+    ...mapState(['cart']),
+    ...mapGetters(['cartTotalPrice'])
   },
   methods: {
     ...mapActions(['incrementCount','decrementCount'])
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped >
-  .basket {
+  .cart {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -60,7 +60,7 @@ export default {
 
     }
   }
-  .basket__btn{
+  .cart__btn{
     background: none;
     border:  2px solid blue;
     padding: 10px 15px;
