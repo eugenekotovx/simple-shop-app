@@ -1,10 +1,61 @@
 {
   "products": [
-          { "category": "art", "id": 1, "name": "Art one", "price": 5, "total": 7},
-          { "category": "art", "id": 2, "name": "Art two", "price": 15, "total": 1},
-          { "category": "book", "id": 3, "name": "Book three", "price": 3, "total": 5},
-          { "category": "Music", "id": 4, "name": "Music Album four", "price": 3, "total": 5 }
-        ],
+    {
+      "category": "art",
+      "id": 1,
+      "name": "Art one",
+      "price": 5,
+      "total": 7
+    },
+    {
+      "category": "art",
+      "id": 2,
+      "name": "Art two",
+      "price": 15,
+      "total": 1
+    },
+    {
+      "category": "book",
+      "id": 3,
+      "name": "Book three",
+      "price": 3,
+      "total": 5
+    },
+    {
+      "category": "Music",
+      "id": 4,
+      "name": "Music Album four",
+      "price": 3,
+      "total": 5
+    }
+  ],
   "orders": [
+    {
+      "id": 195382,
+      "name": "Eugene",
+      "lastName": "Kotov",
+      "phoneNumber": "123124124124",
+      "address": "Saint-P",
+      "cart": [
+        {
+          "category": "art",
+          "id": 2,
+          "name": "Art two",
+          "price": 15,
+          "total": 0,
+          "count": 1,
+          "totalItemPrice": 15
+        },
+        {
+          "category": "book",
+          "id": 3,
+          "name": "Book three",
+          "price": 3,
+          "total": 4,
+          "count": 1,
+          "totalItemPrice": 3
+        }
+      ]
+    }
   ]
 }
