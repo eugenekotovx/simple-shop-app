@@ -4,6 +4,7 @@ import Home from '../views/Shop.vue'
 import store from '@/store/index'
 import CategoryShow from '../views/CategoryShow'
 import ProductShow from '../views/ProductShow'
+import OrderCreate from '../views/OrderCreate'
 
 
 Vue.use(VueRouter)
@@ -13,6 +14,11 @@ Vue.use(VueRouter)
     path: '/shop',
     name: 'Shop',
     component: Home
+  },
+  {
+    path: '/order-create',
+    name: 'order-create',
+    component: OrderCreate
   },
   {
     path: '/shop/:category',
