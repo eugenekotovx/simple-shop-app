@@ -4,11 +4,10 @@
     <div class="shop__wrapper">
     <div v-for="category in categories"  :key="category" class="shop__category-title">
       <router-link :to="{ name: 'category-show', params: {category : category }}">
-        <h1 >
+        <h2 >
             {{ category }}
-        </h1>
+        </h2>
        </router-link>
-
      </div>
     </div>
   </div>
@@ -43,18 +42,17 @@ export default {
   }
   .shop {
       &__wrapper {
-        max-width: 50%;
-        margin: 0 auto;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
       }
       &__category-title {
-        color: blue;
+        color: #bbe1fa;
         text-decoration: none;
+        display: flex;
         a {
           text-decoration: none;
-          color: blue;
+          color: #bbe1fa;
         }
 
       }

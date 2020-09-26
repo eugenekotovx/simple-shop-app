@@ -1,14 +1,14 @@
 <template lang="html">
 <div class="">
-    <div class="">
+    <div class="product">
         <Cart/>
         <h1> {{ shop.product.name }}</h1>
         <h2>{{ shop.product.price + '$'}}</h2>
-        <p>
-          description in future
+        <p class="product__description">
+          {{shop.product.description}}
         </p>
       </div>
-      <BuyProductButton :product="shop.product"/>
+      <BuyProductButton class="product-show__button" :product="shop.product"/>
   </div>
 </template>
 
@@ -31,6 +31,12 @@ export default {
 }
 </script>
 
-<style lang="css" scoped >
-
+<style lang="scss" scoped >
+  .product {
+    display: flex;
+    flex-direction: column;
+    &__desctiption {
+      text-align: left;
+    }
+  }
 </style>

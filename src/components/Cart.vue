@@ -52,7 +52,7 @@ export default {
   .cart {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     &__price {
       display: flex;
@@ -62,9 +62,9 @@ export default {
   }
   .cart__btn{
     background: none;
-    border:  2px solid blue;
+    border:  2px solid #bbe1fa;
     padding: 10px 15px;
-    color: blue;
+    color: #bbe1fa;
     opacity: 0.7;
     position: relative;
     &::before {
@@ -77,13 +77,13 @@ export default {
       top: 0;
     }
   &:hover {
-    color: white;
+    color: #0f4c75;
     opacity: 1;
     transition: .4s;
     cursor: pointer;
   }
   &:hover:before {
-    background-color: blue;
+    background-color: #bbe1fa;
     right: 0%;
     transition: .3s;
   }

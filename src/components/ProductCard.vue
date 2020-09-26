@@ -36,11 +36,14 @@ export default {
 }
 </script>
 
-<style lang="css" scoped >
+<style lang="scss" scoped >
   .sold-out {
     color: red;
   }
   .product-card {
+    a {
+       color: #bbe1fa;
+    }
     margin-bottom: 10px;
   }
 </style>

@@ -27,6 +27,6 @@ export default {
 
 <style lang="css" scoped >
   .category {
-    color: blue;
+    color: #bbe1fa;
   }
 </style>

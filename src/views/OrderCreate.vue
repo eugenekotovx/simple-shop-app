@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     createOrder(order) {
-
       this.$store.dispatch('order/getOrder', order)
     },
     createFreshOrder() {
