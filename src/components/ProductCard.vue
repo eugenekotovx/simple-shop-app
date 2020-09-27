@@ -11,15 +11,14 @@
 
         <img class="product__img" src="@/assets/img/img.png" alt="">
     </div>
-
    </router-link>
-   <span v-if="product.count">
+   <BuyProductButton class="product__btn" :product="product"/>
+   <span v-if="product.count" class="cart__counter">
      in cart: <span>{{product.count}} </span>
      <template v-if="product.total == 0">
        <span class="sold-out"> SOLD OUT </span>
      </template>
    </span>
-   <BuyProductButton class="product__btn" :product="product"/>
   </div>
 </template>
 
@@ -43,6 +42,13 @@ export default {
 </script>
 
 <style lang="scss" scoped >
+  .cart__counter {
+    max-width: 150px;
+    width: 100%;
+    margin-left: auto;
+    text-align: center;
+    margin-top: 10px;
+  }
   .product__img {
     width: 150px;
     height: 150px;

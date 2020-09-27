@@ -4,9 +4,11 @@
     <div class="shop__wrapper">
     <div v-for="category in categories"  :key="category" class="shop__category-title">
       <router-link :to="{ name: 'category-show', params: {category : category }}">
+        <BaseIcon :name="category" />
         <h2 >
             {{ category }}
         </h2>
+
        </router-link>
      </div>
     </div>
