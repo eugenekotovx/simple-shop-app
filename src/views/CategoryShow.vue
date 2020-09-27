@@ -25,7 +25,4 @@ export default {
 </script>
 
 <style lang="css" scoped >
-  .category {
-    color: #bbe1fa;
-  }
 </style>
