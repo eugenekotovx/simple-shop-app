@@ -20,5 +20,12 @@ npm run build
 npm run lint
 ```
 
+### icons
+```
+icons by https://openmoji.org/
+```
+
+ico
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
