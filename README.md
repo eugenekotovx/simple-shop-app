@@ -24,8 +24,5 @@ npm run lint
 ```
 icons by https://openmoji.org/
 ```
-
-ico
-
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
