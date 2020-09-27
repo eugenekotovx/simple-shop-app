@@ -47,12 +47,12 @@ export default {
         justify-content: space-between;
       }
       &__category-title {
-        color: #bbe1fa;
+        color: #1a1a2e;
         text-decoration: none;
         display: flex;
         a {
           text-decoration: none;
-          color: #bbe1fa;
+          color: #1a1a2e;
         }
 
       }

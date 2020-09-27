@@ -62,9 +62,9 @@ export default {
   }
   .cart__btn{
     background: none;
-    border:  2px solid #bbe1fa;
+    border:  2px solid #0f4c75;
     padding: 10px 15px;
-    color: #bbe1fa;
+    color: #1a1a2e;;
     opacity: 0.7;
     position: relative;
     &::before {
@@ -77,13 +77,13 @@ export default {
       top: 0;
     }
   &:hover {
-    color: #0f4c75;
+    color: #bbe1fa;
     opacity: 1;
     transition: .4s;
     cursor: pointer;
   }
   &:hover:before {
-    background-color: #bbe1fa;
+    background-color: #0f4c75;
     right: 0%;
     transition: .3s;
   }

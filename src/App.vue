@@ -10,13 +10,13 @@
 
 <style lang="scss">
 body {
-    background-color: #1a1a2e;
+    background-color: #bbe1fa;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #bbe1fa;
+  color: #1a1a2e;
 }
 .container {
   max-width: 600px;
@@ -27,12 +27,17 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   a {
     font-weight: bold;
-    color: #bbe1fa;
+    color: #1a1a2e;
     text-decoration: none;
+    padding: 5px 10px;
     &.router-link-exact-active {
-      text-decoration: underline;
+      background-color: #0f4c75;
+      border-radius: 10px;
+      color: #bbe1fa;
+      transition: .2s;
     }
   }
 }
