@@ -3,22 +3,22 @@
     <div class="cart__wrapper">
       <button @click="openBusket=!openBusket" type="button" name="button" class="cart__btn">My Cart</button>
       <div v-if="openBusket">
-        <h2
+        <div
         v-for="(cartItem, index) in cart.cart"
         :key="index"
         >
-        <h2 v-if="cartItem.count != 0" class="cart__price">
+        <h3 v-if="cartItem.count != 0" class="cart__price">
           {{ cartItem.count }} - {{ cartItem.name }} - {{ cartItem.price + '$' }}
           <button
           type="button" name="button"
           @click="decrementCount(cartItem)"
-          class="cart__btn">-</button>
+          >-</button>
           <button type="button"
           name="button"
           @click="incrementCount(cartItem)"
-          class="cart__btn">+</button>
-        </h2>
-        </h2>
+          >+</button>
+        </h3>
+        </div>
       </div>
     </div>
 
@@ -60,32 +60,5 @@ export default {
 
     }
   }
-  .cart__btn{
-    background: none;
-    border:  2px solid #0f4c75;
-    padding: 10px 15px;
-    color: #1a1a2e;;
-    opacity: 0.7;
-    position: relative;
-    &::before {
-      position: absolute;
-      content: '';
-      left: 0;
-      right: 100%;
-      bottom: 0;
-      z-index: -1;
-      top: 0;
-    }
-  &:hover {
-    color: #bbe1fa;
-    opacity: 1;
-    transition: .4s;
-    cursor: pointer;
-  }
-  &:hover:before {
-    background-color: #0f4c75;
-    right: 0%;
-    transition: .3s;
-  }
-}
+
 </style>
