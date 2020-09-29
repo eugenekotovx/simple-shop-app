@@ -1,12 +1,34 @@
 <template lang="html">
   <div class="">
     <Cart/>
-    <form class="order__form" @submit.prevent="createOrder(order)">
-      <input type="text" value="" v-model="order.name" placeholder="enter your name">
-      <input type="text" value="" v-model="order.lastName" placeholder="enter your last name">
-      <input type="text" value="" v-model="order.phoneNumber" placeholder="enter your phone number">
-      <input type="text" value="" v-model="order.address" placeholder="enter your address">
-      <button type="submit" name="button">Submit</button>
+    <h2>Order details</h2>
+    <form class="order-form" @submit.prevent="">
+     <BaseInput
+     label="Name:"
+     v-model="order.name"
+     />
+     <BaseInput
+     label="Last name:"
+     v-model="order.lastName"
+     />
+     <BaseInput
+     label="Phone Number:"
+     v-model="order.phoneNumber"
+     />
+       <BaseInput
+         type="text"
+         v-model="order.location.address"
+         label="Address"/>
+        <select class="" v-model="order.location.country" name="Country" placeholder="Country">
+          <option value="" disabled selected> Select your option</option>
+          <option value="hurr">Value 1</option>
+          <option value="hurr">Value 2</option>
+          <option value="hurr">Value 3</option>
+        </select>
+        <BaseInput
+        label="Coupon code"
+        />
+      <BaseButton type="submit" name="button">Submit</BaseButton>
     </form>
   </div>
 </template>
@@ -15,7 +37,7 @@
 import Cart from '@/components/Cart'
 export default {
   components: {
-    Cart
+    Cart,
   },
   data() {
     return {
@@ -31,26 +53,23 @@ export default {
 
       return {
         id: id,
-        name: this.name,
+        name: name,
         lastName: this.lastName,
         phoneNumber: this.phoneNumber,
-        address: this.address,
+        location: {
+          address: this.address,
+          country: this.country
+        },
         cart: this.$store.state.cart.cart
       }
     }
-  }
+  },
 }
 </script>
 
-<style lang="css" scoped >
-  .order__form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  input {
-    margin-bottom: 10px;
-    border: 1px solid black;
+<style lang="scss" scoped >
+  .select {
+    background-color: white;
+    margin-top: 3px;
   }
 </style>
