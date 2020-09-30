@@ -4,6 +4,8 @@ import router from './router'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import store from './store'
+import VModal from 'vue-js-modal'
+Vue.use(VModal)
 const requireComponent = require.context(
   './components',
   false,
