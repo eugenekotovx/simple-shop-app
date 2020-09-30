@@ -4,44 +4,50 @@
     <h2>Order details</h2>
     <form class="order-form" @submit.prevent="">
      <BaseInput
-     label="Name:"
-     v-model="order.name"
+       label="Name:"
+       v-model="order.name"
      />
      <BaseInput
-     label="Last name:"
-     v-model="order.lastName"
+       label="Last name:"
+       v-model="order.lastName"
      />
      <BaseInput
-     label="Phone Number:"
-     v-model="order.phoneNumber"
+       label="Phone Number:"
+       v-model="order.phoneNumber"
      />
+     <BaseInput
+       type="text"
+       v-model="order.location.address"
+       label="Address"/>
        <BaseInput
-         type="text"
-         v-model="order.location.address"
-         label="Address"/>
-        <select class="" v-model="order.location.country" name="Country" placeholder="Country">
-          <option value="" disabled selected> Select your option</option>
-          <option value="hurr">Value 1</option>
-          <option value="hurr">Value 2</option>
-          <option value="hurr">Value 3</option>
-        </select>
-        <BaseInput
-        label="Coupon code"
-        />
-      <BaseButton type="submit" name="button">Submit</BaseButton>
-    </form>
+       label="Coupon code"
+     />
+     <vSelect
+       :options="countries"
+       label="name"
+       :reduce="country => country.name"
+       v-model="order.location.country"
+     />
+    <BaseButton type="submit" name="button">Submit</BaseButton>
+  </form>
   </div>
 </template>
 
 <script>
+
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
+import { countries } from '@/components/data/countries.js'
 import Cart from '@/components/Cart'
 export default {
   components: {
     Cart,
+    vSelect
   },
   data() {
     return {
-      order: this.createFreshOrder()
+      order: this.createFreshOrder(),
+      countries: countries
     }
   },
   methods: {
@@ -58,7 +64,7 @@ export default {
         phoneNumber: this.phoneNumber,
         location: {
           address: this.address,
-          country: this.country
+          country: this.value
         },
         cart: this.$store.state.cart.cart
       }
