@@ -1,17 +1,25 @@
 <template lang="html">
-  <h2>
-    <Cart/>
-    <router-link to="/order-create">
-      <button name="button">Purchase</button></router-link> 
-  </h2>
+  <div class="">
+    <div v-for="product in cart.cart" :key="product.id">
+      <ProductCard :product="product" />
+    </div>
+    <h2>
+      <router-link to="/order-create">
+        <button name="button">Purchase</button></router-link>
+    </h2>
+  </div>
 </template>
 
 <script>
-import Cart from '@/components/Cart'
+import ProductCard from '@/components/ProductCard'
+import {mapState} from 'vuex'
 
 export default {
   components: {
-    Cart
+    ProductCard
+  },
+  computed: {
+    ...mapState(['cart'])
   }
 }
 </script>
