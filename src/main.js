@@ -5,6 +5,7 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import store from './store'
 import VModal from 'vue-js-modal'
+import 'normalize.css'
 Vue.use(VModal)
 const requireComponent = require.context(
   './components',
