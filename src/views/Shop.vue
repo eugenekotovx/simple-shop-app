@@ -1,15 +1,13 @@
 <template>
   <div>
-    <Cart/>
-    <div class="shop__wrapper">
-    <div v-for="category in categories"  :key="category" class="shop__category-title">
+    <div class="category__wrapper">
+    <div v-for="category in categories"  :key="category" class="category__name">
       <router-link :to="{ name: 'category-show', params: {category : category }}">
-        <BaseIcon :name="category" />
+        <BaseIcon :width="174" :height="174" :name="category" />
         <h2 >
             {{ category }}
         </h2>
-
-       </router-link>
+      </router-link>
      </div>
     </div>
   </div>
@@ -18,14 +16,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import Cart from '@/components/Cart'
-
 
 export default {
   name: 'Shop',
-  components: {
-    Cart
-  },
   mounted() {
     this.$store.dispatch('shop/getCategories')
   },
@@ -38,26 +31,27 @@ export default {
 }
 </script>
 <style media="screen" lang="scss">
-
   .btn {
     height: 24px;
   }
-  .shop {
-      &__wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-      &__category-title {
-        color: #1a1a2e;
+  .category {
+    &__wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__name {
+      color: #1a1a2e;
+      text-decoration: none;
+      display: flex;
+      a {
         text-decoration: none;
+        color: #1a1a2e;
         display: flex;
-        a {
-          text-decoration: none;
-          color: #1a1a2e;
-        }
-
+        flex-direction: column;
+        text-align: center;
       }
+    }
   }
 
 </style>
