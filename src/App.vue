@@ -1,13 +1,12 @@
 <template>
   <div id="app" class="container">
-    <div id="nav">
-      <router-link to="/shop">Shop</router-link>
-      <router-link to="/cart">Cart</router-link>
-    </div>
+    <NavBar/>
     <router-view/>
   </div>
 </template>
 
+import NavBar from '@/components/NavBar'
+    NavBar,
 <style lang="scss">
 body {
     background-color: #bbe1fa;
