@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="product__card -shadow">
     <router-link
-    :to="{ name: 'product-show', params: { category: $route.params.category, id : product.id }}"
+    :to="{ name: 'product-show', params: { id : product.id, product: product }}"
     >
     <div class="product__wrapper">
       <div class="product__description">
@@ -12,7 +12,7 @@
         <img class="product__img" src="@/assets/img/img.png" alt="">
     </div>
    </router-link>
-   <BuyProductButton class="product__btn" :product="product"/>
+   <BaseButton @click="addProduct(product)"> Add product in cart </BaseButton>
    <span v-if="product.count" class="cart__counter">
      in cart: <span>{{product.count}} </span>
      <template v-if="product.total == 0">
@@ -23,10 +23,9 @@
 </template>
 
 <script>
-import BuyProductButton from '@/components/BuyProductButton'
+import {mapActions} from 'vuex'
 export default {
   components: {
-    BuyProductButton
   },
   props: {
     product: {
@@ -38,6 +37,9 @@ export default {
       required: true
     }
   },
+  methods: {
+    ...mapActions(['addProduct'])
+  }
 }
 </script>
 
@@ -67,10 +69,6 @@ export default {
         color: #1a1a2e;
      }
      margin-bottom: 10px;
-   }
-   &__btn {
-     max-width: 300px;
-     margin-left:  auto;
    }
    &__wrapper {
      display: flex;

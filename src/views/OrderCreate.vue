@@ -19,8 +19,8 @@
        type="text"
        v-model="order.location.address"
        label="Address"/>
-       <BaseInput
-       label="Coupon code"
+     <BaseInput
+     label="Coupon code"
      />
      <vSelect
        :options="countries"
