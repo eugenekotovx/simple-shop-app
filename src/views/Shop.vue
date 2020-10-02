@@ -20,7 +20,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'Shop',
   mounted() {
-    this.$store.dispatch('shop/getCategories')
+    this.$store.dispatch('shop/getShopData')
   },
   computed: {
     ...mapState(['shop']),
