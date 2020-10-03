@@ -1,6 +1,9 @@
 <template lang="html">
   <div class="">
-    <BaseButton type="submit" @click="openRegistration" name="button">Registration</BaseButton>
+    <BaseButton type="submit"
+      v-if="this.$store.state.user.logn"
+      @click="openRegistration"
+      name="button">Registration</BaseButton>
     <modal
     name="registration">
       <Registration/>
