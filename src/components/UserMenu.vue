@@ -1,7 +1,7 @@
 <template lang="html">
-  <div class="">
+  <div class="userMenu">
     <BaseButton type="submit"
-      v-if="this.$store.state.user.logn"
+      v-if="!this.$store.state.user.login"
       @click="openRegistration"
       name="button">Registration</BaseButton>
     <modal
