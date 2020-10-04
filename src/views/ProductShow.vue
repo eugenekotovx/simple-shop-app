@@ -3,11 +3,13 @@
     <div class="product">
         <h1> {{ shop.product.name }}</h1>
         <h2>{{ shop.product.price + '$'}}</h2>
-        <p class="product__description">
-          {{shop.product.description}}
-        </p>
+        <div class="product__info">
+            <img class="product__img" :src="require(`@/assets/img/` + shop.product.name.split(' ').join('_') + '.png')" alt="">
+          <p class="product__description">
+            {{shop.product.description}}
+          </p>
+        </div>
       </div>
-      <BaseButton @click="addProduct(shop.product)"> Add product in cart </BaseButton>
       <BaseButton
       @click="addProduct(shop.product)"
       buttonClass="button-active">
@@ -36,8 +38,16 @@ export default {
   .product {
     display: flex;
     flex-direction: column;
-    &__desctiption {
-      text-align: left;
+    &__info {
+      display: flex;
+      flex-direction: column;
+    }
+    &__description {
+      text-align: center;
+    }
+    &__img {
+      max-width: 40%;
+      margin: 0 auto;
     }
   }
 </style>
