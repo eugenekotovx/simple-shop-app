@@ -11,8 +11,12 @@ const shopApi = axios.create({
 })
 
 export default {
-  getShopData() {
+  getCategories() {
     return shopApi.get('/products/')
+    .then(products => {
+      var categories = [...new Set(products.data.map(item => item.category))]
+      return categories
+    })
   },
   getCategory(params) {
     return shopApi.get('/products/?category=' + params.category)

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="category__wrapper">
-    <div v-for="category in categories"  :key="category" class="category__name">
+    <div v-for="category in shop.shop"  :key="category" class="category__name">
       <router-link :to="{ name: 'category-show', params: {category : category }}">
         <BaseIcon :width="200" :height="200" :name="category" />
         <h2 >
@@ -20,20 +20,14 @@ import { mapState } from 'vuex'
 export default {
   name: 'Shop',
   mounted() {
-    this.$store.dispatch('shop/getShopData')
+    this.$store.dispatch('shop/getCategories')
   },
   computed: {
-    ...mapState(['shop']),
-    categories() {
-      return [...new Set(this.shop.shop.map(item => item.category))]
-    }
+    ...mapState(['shop'])
   },
 }
 </script>
 <style media="screen" lang="scss">
-  .btn {
-    height: 24px;
-  }
   .category {
     &__wrapper {
       display: flex;
@@ -45,6 +39,7 @@ export default {
       color: #1a1a2e;
       text-decoration: none;
       display: flex;
+      margin-right: 6px;
       a {
         text-decoration: none;
         color: #1a1a2e;
