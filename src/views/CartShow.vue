@@ -3,23 +3,28 @@
     <div v-for="product in cart.cart" :key="product.id">
       <ProductCard :product="product" />
     </div>
+    <div class="">
+      {{ cartTotalPrice }}
+    </div>
     <h2>
       <router-link to="/order-create">
-        <button name="button">Purchase</button></router-link>
+        <BaseButton buttonClass="button-active">Purchase</BaseButton>
+      </router-link>
     </h2>
   </div>
 </template>
 
 <script>
 import ProductCard from '@/components/ProductCard'
-import {mapState} from 'vuex'
+import {mapState, mapGetters} from 'vuex'
 
 export default {
   components: {
     ProductCard
   },
   computed: {
-    ...mapState(['cart'])
+    ...mapState(['cart']),
+    ...mapGetters(['cartTotalPrice'])
   }
 }
 </script>
