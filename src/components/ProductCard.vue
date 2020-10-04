@@ -9,7 +9,7 @@
         <h3> PRICE: {{ product.price + '$' }}</h3>
       </div>
 
-        <img class="product__img" src="@/assets/img/img.png" alt="">
+        <img class="product__img" :src="require(`@/assets/img/` + product.name.split(' ').join('_') + '.png')" alt="">
     </div>
    </router-link>
    <BaseButton @click="addProduct(product)"> Add product in cart </BaseButton>
@@ -34,7 +34,6 @@ export default {
     },
     category: {
       type: String,
-      required: true
     }
   },
   methods: {
