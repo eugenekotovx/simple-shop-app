@@ -1,35 +1,218 @@
 {
   "products": [
     {
-      "category": "art",
+      "category": "Fastfood",
       "id": 1,
-      "name": "Art one",
+      "name": "Burger",
       "price": 5,
       "total": 7,
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
-      "category": "art",
+      "category": "Fastfood",
       "id": 2,
-      "name": "Art two",
+      "name": "Fried fries",
       "price": 15,
       "total": 1,
+      "img": "img.png",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
-      "category": "book",
+      "category": "Fastfood",
       "id": 3,
-      "name": "Book three",
+      "name": "Sandwich",
       "price": 3,
       "total": 5,
+      "img": "img.png",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
-      "category": "Music",
+      "category": "Fastfood",
       "id": 4,
-      "name": "Music Album four",
+      "name": "Falafel",
       "price": 3,
       "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Asia",
+      "id": 5,
+      "name": "Bento box",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Asia",
+      "id": 6,
+      "name": "Sushi",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Asia",
+      "id": 7,
+      "name": "Rice ball",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Asia",
+      "id": 8,
+      "name": "Ramen",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Fruits",
+      "id": 9,
+      "name": "Apple",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Fruits",
+      "id": 10,
+      "name": "Banana",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Fruits",
+      "id": 11,
+      "name": "Melon",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Fruits",
+      "id": 12,
+      "name": "Mango",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Fruits",
+      "id": 13,
+      "name": "Grapes",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Fruits",
+      "id": 14,
+      "name": "Strawberry",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Vegetables",
+      "id": 15,
+      "name": "Broccoli",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Vegetables",
+      "id": 16,
+      "name": "Onion",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Vegetables",
+      "id": 17,
+      "name": "Tomato",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Vegetables",
+      "id": 18,
+      "name": "Avocado",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Vegetables",
+      "id": 19,
+      "name": "Mushroom",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Drink",
+      "id": 20,
+      "name": "Bubble tea",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Drink",
+      "id": 21,
+      "name": "Coffee",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Drink",
+      "id": 22,
+      "name": "Tea",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Fastfood",
+      "id": 23,
+      "name": "Pizza",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "category": "Fastfood",
+      "id": 24,
+      "name": "Hot dog",
+      "price": 3,
+      "total": 5,
+      "img": "img.png",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     }
   ],
