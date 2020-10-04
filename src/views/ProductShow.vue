@@ -8,6 +8,14 @@
         </p>
       </div>
       <BaseButton @click="addProduct(shop.product)"> Add product in cart </BaseButton>
+      <BaseButton
+      @click="addProduct(shop.product)"
+      buttonClass="button-active">
+      <BaseIcon
+      :width="37"
+      :height="37"
+      :name="'cart'"
+      /> Add product in cart </BaseButton>
   </div>
 </template>
 

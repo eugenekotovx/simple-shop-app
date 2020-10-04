@@ -2,7 +2,6 @@
   <div class="">
     <button
       v-on="$listeners"
-      class="button"
       :class="buttonClass"
       v-bind="$attrs">
       <slot/>
@@ -22,5 +21,21 @@ export default {
 </script>
 
 <style lang="css" scoped >
-
+  .button-active {
+    background: #0f4c75;
+    color: white;
+    padding: 4px 16px;
+    border-radius: 8px;
+  }
+  .button__text {
+    margin-top: 6px;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+  }
 </style>
