@@ -4,7 +4,6 @@
       <NavBar/>
       <UserMenu/>
     </div>
-    <Cart/>
     <router-view/>
   </div>
 </template>
@@ -12,11 +11,9 @@
 <script type="text/javascript">
 import UserMenu from '@/components/UserMenu'
 import NavBar from '@/components/NavBar'
-import Cart from '@/components/Cart'
 export default {
   components: {
     NavBar,
-    Cart,
     UserMenu
   }
 }
