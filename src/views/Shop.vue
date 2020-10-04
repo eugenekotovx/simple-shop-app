@@ -3,7 +3,7 @@
     <div class="category__wrapper">
     <div v-for="category in categories"  :key="category" class="category__name">
       <router-link :to="{ name: 'category-show', params: {category : category }}">
-        <BaseIcon :width="174" :height="174" :name="category" />
+        <BaseIcon :width="200" :height="200" :name="category" />
         <h2 >
             {{ category }}
         </h2>
@@ -38,6 +38,7 @@ export default {
     &__wrapper {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-between;
     }
     &__name {
