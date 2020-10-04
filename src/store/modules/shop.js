@@ -9,7 +9,7 @@ export const state = {
 }
 
 export const mutations = {
-  SET_SHOP_DATA(state, data) {
+  SET_CATEGORIES(state, data) {
     state.shop = data
   },
   SET_CATEGORY(state, category) {
@@ -21,13 +21,13 @@ export const mutations = {
 }
 
 export const actions = {
-    getShopData({ commit, state }) {
+    getCategories({ commit, state }) {
       if (state.shop.length) {
         return state.shop
       }
-      return ShopService.getShopData()
+      return ShopService.getCategories()
       .then(response => {
-        commit('SET_SHOP_DATA', response.data)
+        commit('SET_CATEGORIES', response)
       })
       .catch(error => {
         console.log(error)
