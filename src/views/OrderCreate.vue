@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="">
-    <Cart/>
     <h2>Order details</h2>
     <form class="order-form" @submit.prevent="">
      <BaseInput
@@ -38,10 +37,8 @@
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import { countries } from '@/components/data/countries.js'
-import Cart from '@/components/Cart'
 export default {
   components: {
-    Cart,
     vSelect
   },
   data() {
