@@ -6,7 +6,6 @@ import CategoryShow from '../views/CategoryShow'
 import ProductShow from '../views/ProductShow'
 import OrderCreate from '../views/OrderCreate'
 
-
 Vue.use(VueRouter)
 
   const routes = [
@@ -25,20 +24,6 @@ Vue.use(VueRouter)
     name: 'category-show',
     component: CategoryShow,
     props: true,
-    beforeEnter(routeTo, routeFrom, next) {
-      store
-      .dispatch('shop/getCategory', routeTo.params)
-      .then(() => {
-        next()
-      })
-      .catch(error => {
-        if (error.response && error.response.status == 404) {
-          console.log(error.response)
-        } else {
-          next({ name: 'shop' })
-        }
-      })
-    },
   },
   {
     path: '/shop/:category/:id',
