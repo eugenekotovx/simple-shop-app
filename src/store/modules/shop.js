@@ -5,15 +5,19 @@ export const namespaced = true;
 export const state = {
   shop:[],
   product: {}, // for productShow
-  category: [] // for categoryShow
+  category: [], // for categoryShow
+  perPage: 4
 }
 
 export const mutations = {
   SET_CATEGORIES(state, data) {
     state.shop = data
   },
-  SET_CATEGORY(state, category) {
-    state.category = category
+  PUSH_PRODUCTS(state, products) {
+    state.category.push(...products)
+  },
+  SET_PRODUCTS(state) {
+    state.category = []
   },
   SET_PRODUCT(state, product) {
     state.product = product
@@ -33,18 +37,16 @@ export const actions = {
         console.log(error)
       })
     },
-    getCategory({ commit }, params) {
-      var test = state.category.find(item => item.category == params.category)
-
-      if (test) {
-        return state.category
-      } else {
-        return ShopService.getCategory(params)
-        .then(category => {
-          commit('SET_CATEGORY', category)
-          return category
+    getProducts({ commit }, {params, perPage, page}) {
+        return ShopService.getProducts(params, perPage, page)
+        .then(products => {
+          commit('PUSH_PRODUCTS', products)
+          return products
         })
-      }
+     },
+     setCategory({commit}) {
+         commit('SET_PRODUCTS')
+         return state.category
      },
      getProduct({  commit, state }, params ) {
        if (params.id == state.product.id) {
