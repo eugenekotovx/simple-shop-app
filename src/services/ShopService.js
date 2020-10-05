@@ -18,8 +18,8 @@ export default {
       return categories
     })
   },
-  getCategory(params) {
-    return shopApi.get('/products/?category=' + params.category)
+  getProducts(params, perPage, page) {
+    return shopApi.get('/products/?category=' + params.category + '&_limit=' + perPage + '&_page=' + page)
     .then(category => {
       return category.data
     })
