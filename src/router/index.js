@@ -5,7 +5,7 @@ import store from '@/store/index'
 import CategoryShow from '../views/CategoryShow'
 import ProductShow from '../views/ProductShow'
 import OrderCreate from '../views/OrderCreate'
-
+import UserProfile from '../views/UserProfile'
 Vue.use(VueRouter)
 
   const routes = [
@@ -24,6 +24,12 @@ Vue.use(VueRouter)
     name: 'category-show',
     component: CategoryShow,
     props: true,
+  },
+  {
+    path: '/user/:id',
+    name: 'user-show',
+    component: UserProfile,
+    props: true
   },
   {
     path: '/shop/:category/:id',
