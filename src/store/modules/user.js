@@ -1,7 +1,7 @@
 export const namespaced = true;
 
 export const state = {
-  user: (JSON.parse(localStorage.getItem('user'))) ? JSON.parse(localStorage.getItem('user')) : {}
+  user: (JSON.parse(localStorage.getItem('user'))) ? JSON.parse(localStorage.getItem('user')) : {login: false}
 }
 
 export const mutations = {
