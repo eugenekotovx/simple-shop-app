@@ -21,8 +21,7 @@ export default {
   },
   data() {
     return {
-      currentPage: 1,
-      list: []
+      currentPage: 1
     }
   },
   methods: {
