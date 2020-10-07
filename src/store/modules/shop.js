@@ -13,7 +13,7 @@ export const mutations = {
   SET_CATEGORIES(state, data) {
     state.shop = data
   },
-  PUSH_PRODUCTS(state, products) {
+  LOAD_PRODUCTS(state, products) {
     state.category.push(...products)
   },
   SET_PRODUCTS(state) {
@@ -40,7 +40,7 @@ export const actions = {
     getProducts({ commit }, {params, perPage, page}) {
         return ShopService.getProducts(params, perPage, page)
         .then(products => {
-          commit('PUSH_PRODUCTS', products)
+          commit('LOAD_PRODUCTS', products)
           return products
         })
      },
