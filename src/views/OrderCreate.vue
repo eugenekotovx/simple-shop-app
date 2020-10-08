@@ -14,7 +14,7 @@
      <BaseInput
        type="text"
        v-model="order.address"
-       :class="{ error: $v.order.address.$error }"
+       @blur="$v.order.address.$touch()"
        label="Address"/>
      <BaseInput
      label="Coupon code"
@@ -25,8 +25,18 @@
        :reduce="country => country.name"
        v-model="order.country"
        :class="{ error: $v.order.country.$error }"
-       @blur="$v.order.country.$touch()"
-     />
+     >
+     <template #search="{attributes, events}">
+      <input
+        class="vs__search"
+        :required="!selected"
+        v-bind="attributes"
+        v-on="events"
+        @blur="$v.order.country.$touch()"
+
+      />
+      </template>
+     </vSelect>
     <BaseButton type="submit" name="button">Submit</BaseButton>
   </form>
   </div>
