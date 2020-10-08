@@ -4,7 +4,7 @@
     <div class="cart__list" v-for="product in this.$store.state.cart.cart" :key="product.id">
       <span> {{ product.name }} - {{'x' + product.count }} - {{product.totalItemPrice + '$'}}</span>
     </div>
-    <form class="order-form" @submit.prevent="createOrder(order)">
+    <form class="order-form" @submit.prevent="createOrder">
      <BaseInput
        label="Phone Number:"
        v-model="order.phoneNumber"
@@ -29,7 +29,7 @@
      <template #search="{attributes, events}">
       <input
         class="vs__search"
-        :required="!selected"
+        :required="!order.country"
         v-bind="attributes"
         v-on="events"
         @blur="$v.order.country.$touch()"
@@ -66,7 +66,10 @@ export default {
   },
   methods: {
     createOrder(order) {
-      this.$store.dispatch('order/getOrder', order)
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.$store.dispatch('order/getOrder', order)
+      }
     },
     createFreshOrder() {
       const id = Math.floor(Math.random() * 1000000)
