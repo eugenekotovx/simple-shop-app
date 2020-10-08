@@ -30,6 +30,9 @@ export default {
       return product.data
     })
   },
+  getUserOrders(userId) {
+    return shopApi.get('/orders?userId=' + userId)
+  },
   setOrder(order) {
     return shopApi.post('/orders', order)
   }
