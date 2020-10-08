@@ -1,19 +1,38 @@
 <template lang="html">
   <div class="form">
-    <form @submit.prevent="registerUser(user)"  class="form__container">
+    <form @submit.prevent="registerUser"  class="form__container">
       <h2 class="form__heading">Registration</h2>
-      <BaseInput label="Name:" class="form__field" v-model="user.name"/>
-      <BaseInput label="Phone:" class="form__field" v-model="user.phone"/>
+      <BaseInput
+      label="Name:"
+      class="form__field"
+      v-model="user.name"
+      :class="{ error: $v.user.name.$error }"
+      @blur="$v.user.name.$touch()"
+      />
+      <BaseInput
+      label="Phone:"
+      class="form__field"
+      v-model="user.phone"
+      :class="{ error: $v.user.phone.$error }"
+      @blur="$v.user.phone.$touch()"
+      />
       <BaseButton buttonClass="button-active" type="submit" name="button">Submit</BaseButton>
     </form>
   </div>
 </template>
 
 <script>
+import { required } from 'vuelidate/lib/validators'
 export default {
   data() {
     return {
       user: this.createUser()
+    }
+  },
+  validations: {
+    user: {
+      name: { required },
+      phone: { required },
     }
   },
   methods: {
@@ -22,12 +41,15 @@ export default {
 
       return {
         id: id,
-        name: this.name,
-        phone: this.phone
+        name: '',
+        phone: ''
       }
     },
-    registerUser(user) {
-      this.$store.dispatch('user/registerUser', user)
+    registerUser() {
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.$store.dispatch('user/registerUser', this.user)
+      }
     }
   }
 }
