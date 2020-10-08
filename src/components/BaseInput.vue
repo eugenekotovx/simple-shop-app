@@ -24,7 +24,7 @@ export default {
     listeners() {
       return {
         ...this.$listeners,
-        input: this.updateValue 
+        input: this.updateValue
       }
     }
   }
@@ -32,5 +32,7 @@ export default {
 </script>
 
 <style lang="css" scoped >
-
+  .error {
+    border: red 2px solid;
+  }
 </style>
