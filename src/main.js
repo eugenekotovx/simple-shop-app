@@ -6,6 +6,8 @@ import camelCase from 'lodash/camelCase'
 import store from './store'
 import VModal from 'vue-js-modal'
 import 'normalize.css'
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 Vue.use(VModal)
 const requireComponent = require.context(
   './components',
