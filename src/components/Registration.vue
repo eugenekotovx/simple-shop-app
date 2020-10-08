@@ -4,7 +4,7 @@
       <h2 class="form__heading">Registration</h2>
       <BaseInput label="Name:" class="form__field" v-model="user.name"/>
       <BaseInput label="Phone:" class="form__field" v-model="user.phone"/>
-      <BaseButton type="submit" name="button">Submit</BaseButton>
+      <BaseButton buttonClass="button-active" type="submit" name="button">Submit</BaseButton>
     </form>
   </div>
 </template>
@@ -13,8 +13,7 @@
 export default {
   data() {
     return {
-      user: this.createUser(),
-      buttonClass: ''
+      user: this.createUser()
     }
   },
   methods: {
