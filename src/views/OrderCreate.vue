@@ -14,11 +14,9 @@
      <BaseInput
        type="text"
        v-model="order.address"
+       :class="{ error: $v.order.address.$error }"
        @blur="$v.order.address.$touch()"
        label="Address"/>
-     <BaseInput
-     label="Coupon code"
-     />
      <vSelect
        :options="countries"
        label="name"
@@ -37,6 +35,9 @@
       />
       </template>
      </vSelect>
+     <BaseInput
+     label="Coupon code"
+     />
     <BaseButton type="submit" name="button">Submit</BaseButton>
   </form>
   </div>
@@ -65,10 +66,10 @@ export default {
     }
   },
   methods: {
-    createOrder(order) {
+    createOrder() {
       this.$v.$touch()
       if (!this.$v.$invalid) {
-        this.$store.dispatch('order/getOrder', order)
+        this.$store.dispatch('order/getOrder', this.order)
       }
     },
     createFreshOrder() {
@@ -78,10 +79,9 @@ export default {
         userId: this.$store.state.user.user.id,
         id: id,
         name: this.$store.state.user.user.name,
-        lastName: this.lastName,
-        phoneNumber: this.phoneNumber,
-        address: this.address,
-        country: this.value,
+        phoneNumber: this.$store.state.user.phone,
+        address: '',
+        country: '',
         cart: this.$store.state.cart.cart
       }
     }
@@ -93,8 +93,5 @@ export default {
   .select {
     background-color: white;
     margin-top: 3px;
-  }
-  .error {
-    border: red 2px solid;
   }
 </style>
