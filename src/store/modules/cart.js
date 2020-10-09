@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 export const state = {
    cart: [],
+   cart: (JSON.parse(localStorage.getItem('cart'))) ? JSON.parse(localStorage.getItem('cart')) : [],
    cartCounter: 0
 }
 
