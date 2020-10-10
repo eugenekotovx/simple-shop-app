@@ -44,19 +44,7 @@ a {
   max-width: 600px;
   margin: 0 auto;
 }
-.link {
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  color: #1a1a2e;
-  &:hover {
-    background-color: #0f4c75;
-    color: #bbe1fa;
-    transition: .2s;
-  }
-}
+
 .button {
   background: none;
   border:  2px solid #0f4c75;
