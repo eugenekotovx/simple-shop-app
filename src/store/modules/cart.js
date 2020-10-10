@@ -17,34 +17,36 @@ export const mutations = {
 export const actions = {
   addProduct({commit, dispatch}, item) {
     if (item.total !== 0) {
-      commit('ADD_PRODUCT', item)
       Vue.set(item, 'count', 1)
       Vue.set(item, 'totalItemPrice', item.price)
-      dispatch('saveCart')
-    }
-  },
-  incrementCount({commit, dispatch}, item) {
-    if (item.total !== 0) {
-      item.count++
       item.total--
-      item.totalItemPrice = item.price * item.count
+      commit('ADD_PRODUCT', item)
+      dispatch('saveCart')
+    }
+  },
+  incrementCount({commit, dispatch, getters}, item) {
+    var itemInCart = getters.getItemFromCart(item.id)
+    if (itemInCart && itemInCart.total !== 0) {
+      itemInCart.count++
+      itemInCart.total--
       commit('UPDATE_COUNT', item)
       dispatch('saveCart')
     }
   },
-  decrementCount({commit, state, dispatch}, item) {
-    if (item.count === 1) {
+  decrementCount({commit, getters, dispatch}, item) {
+    var itemInCart = getters.getItemFromCart(item.id)
+    if (itemInCart.count === 1) {
       state.cart = state.cart.filter((cartItem) => cartItem.id !== item.id)
-      }
-      item.count--
-      item.total ++
-      item.totalItemPrice = item.price * item.count
-      commit('UPDATE_COUNT', item)
-      dispatch('saveCart')
-    },
-    saveCart({state}) {
-      localStorage.setItem('cart', JSON.stringify(state.cart))
     }
+    itemInCart.count--
+    itemInCart.total ++
+    itemInCart.totalItemPrice = itemInCart.price * itemInCart.count
+    commit('UPDATE_COUNT', itemInCart)
+    dispatch('saveCart')
+  },
+  saveCart({state}) {
+    localStorage.setItem('cart', JSON.stringify(state.cart))
+  }
 }
 
 export const getters = {
@@ -55,4 +57,7 @@ export const getters = {
     })
     return totalPrice + '$'
   },
+  getItemFromCart: state => id => {
+    return state.cart.find(item => item.id == id)
+  }
 }
