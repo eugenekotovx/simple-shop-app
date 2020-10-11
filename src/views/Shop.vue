@@ -2,7 +2,7 @@
   <div>
     <div class="category__wrapper">
     <div v-for="category in shop.shop"  :key="category" class="category__name">
-      <router-link :to="{ name: 'category-show', params: {category : category }}">
+      <router-link :to="{ name: 'products-list', params: {category : category }}">
         <BaseIcon :width="200" :height="200" :name="category" />
         <h2 >
             {{ category }}
