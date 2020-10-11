@@ -6,6 +6,7 @@ import ProductsList from '../views/ProductsList'
 import ProductShow from '../views/ProductShow'
 import OrderCreate from '../views/OrderCreate'
 import UserProfile from '../views/UserProfile'
+import NotFound from '../views/NotFound.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -45,11 +46,18 @@ Vue.use(VueRouter)
       .catch(error => {
         if (error.response && error.response.status == 404) {
           console.log(error.response)
+          next({ name: '404', params: { resource: 'product'} })
         } else {
           next({ name: 'shop' })
         }
       })
     }
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: NotFound,
+    props: true
   },
   {
     path: '/cart',
@@ -58,6 +66,9 @@ Vue.use(VueRouter)
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/CartShow.vue')
+  {
+    path: '*',
+    redirect: { name: '404' }
   }
 ]
 
