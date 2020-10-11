@@ -35,11 +35,15 @@ export default {
     }
   },
   beforeRouteEnter(routeTo, routeFrom, next) {
-    store
-    .dispatch('user/getOrders', routeTo.params.id)
-    .then(() => {
-      next()
-    })
+    if (routeTo.params.id == store.state.user.user.id) {
+      store
+      .dispatch('user/getOrders', routeTo.params.id)
+      .then(() => {
+        next()
+      })
+    } else if (routeTo.params.id !== store.state.user.user.id){
+      next({ name: 'network-issue' })
+    }
   },
 }
 </script>

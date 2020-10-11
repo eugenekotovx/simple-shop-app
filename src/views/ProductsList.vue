@@ -4,7 +4,11 @@
     <div class="category" v-for="product in shop.category"  :key="product.id">
       <ProductCard :category="$route.params.category" :product="product"/>
     </div>
-    <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+    <infinite-loading @infinite="infiniteHandler" spinner="waveDots">
+      <div slot="no-results">We cant find this products....
+        <router-link class="link" to="/shop">Back to shop page</router-link>
+      </div>
+    </infinite-loading>
   </div>
 </template>
 
