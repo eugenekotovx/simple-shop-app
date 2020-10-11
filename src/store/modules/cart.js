@@ -29,6 +29,7 @@ export const actions = {
     if (itemInCart && itemInCart.total !== 0) {
       itemInCart.count++
       itemInCart.total--
+      itemInCart.totalItemPrice = itemInCart.price * itemInCart.count
       commit('UPDATE_COUNT', item)
       dispatch('saveCart')
     }
