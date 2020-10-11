@@ -10,21 +10,17 @@
           </p>
         </div>
       </div>
-      <BaseButton
-      @click="addProduct(shop.product)"
-      buttonClass="button-active">
-      <BaseIcon
-      :width="37"
-      :height="37"
-      :name="'cart'"
-      /> Add product in cart </BaseButton>
+      <ProductControls :product="shop.product"/>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
-
+import ProductControls from '@/components/ProductControls'
 export default {
+  components: {
+    ProductControls
+  },
   methods: {
     ...mapActions(['addProduct'])
   },
