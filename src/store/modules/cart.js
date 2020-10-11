@@ -30,7 +30,7 @@ export const actions = {
       itemInCart.count++
       itemInCart.total--
       itemInCart.totalItemPrice = itemInCart.price * itemInCart.count
-      commit('UPDATE_COUNT', item)
+      commit('UPDATE_COUNT', itemInCart)
       dispatch('saveCart')
     }
   },
@@ -52,7 +52,7 @@ export const actions = {
 
 export const getters = {
   cartTotalPrice: state =>  {
-    let totalPrice = 0
+    var totalPrice = 0
     state.cart.forEach(item => {
       totalPrice += item.totalItemPrice
     })
