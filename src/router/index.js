@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Shop.vue'
 import store from '@/store/index'
-import CategoryShow from '../views/CategoryShow'
+import ProductsList from '../views/ProductsList'
 import ProductShow from '../views/ProductShow'
 import OrderCreate from '../views/OrderCreate'
 import UserProfile from '../views/UserProfile'
@@ -21,8 +21,8 @@ Vue.use(VueRouter)
   },
   {
     path: '/shop/:category',
-    name: 'category-show',
-    component: CategoryShow,
+    name: 'products-list',
+    component: ProductsList,
     props: true,
   },
   {

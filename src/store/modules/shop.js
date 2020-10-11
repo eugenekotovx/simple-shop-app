@@ -5,7 +5,7 @@ export const namespaced = true;
 export const state = {
   shop:[],
   product: {}, // for productShow
-  category: [], // for categoryShow
+  category: [], // for productsList
   perPage: 4
 }
 

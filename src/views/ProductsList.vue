@@ -38,9 +38,10 @@ export default {
            $state.loaded()
          } else {
            $state.complete()
+           console.log('complete')
          }
        })
-     }
+     },
   },
   beforeRouteEnter(routeTo, routeFrom, next) {
     store
@@ -50,7 +51,7 @@ export default {
     })
   },
   computed: {
-    ...mapState(['shop'])
+    ...mapState(['shop', 'cart']),
   },
 }
 </script>
