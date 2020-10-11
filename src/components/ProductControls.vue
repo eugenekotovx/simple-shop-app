@@ -14,7 +14,7 @@
       </span>
      </BaseButton>
    <div class="controls"
-    v-if="product.total !== 0 && itemInCart.count >= 1">
+    v-if="itemInCart.count >= 1">
      <BaseButton
        type="button"
        buttonClass="button-active"
