@@ -10,7 +10,7 @@
         :name="'cart'"
       />
       <span class="button__text">
-        Add product in cart
+        Add to cart
       </span>
      </BaseButton>
    <div class="controls"
