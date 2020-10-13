@@ -21,7 +21,7 @@ export default {
 <style lang="scss">
 
 body {
-    background-color: #bbe1fa;
+  background-color: #F5F5F8;
 }
 a {
   text-decoration: none;
@@ -31,7 +31,6 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: bold;
-  color: #1a1a2e;
 }
 .header {
   padding: 30px 0px;

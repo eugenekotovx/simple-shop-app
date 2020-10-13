@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="category__wrapper">
-    <div v-for="category in shop.shop"  :key="category" class="category__name">
+    <div v-for="category in shop.shop"  :key="category" class="category__title">
       <router-link :to="{ name: 'products-list', params: {category : category }}">
-        <BaseIcon :width="200" :height="200" :name="category" />
+        <BaseIcon class="category__img" :width="200" :height="200" :name="category" />
         <h2 >
             {{ category }}
         </h2>

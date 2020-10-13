@@ -1,41 +1,36 @@
 <template lang="html">
-  <div class="controls__group">
-      <BaseButton
-        buttonClass="button-active"
-        v-if="!itemInCart.count"
-        @click.once="addProduct(product)">
-      <BaseIcon
-        :width="37"
-        :height="37"
-        :name="'cart'"
-      />
-      <span class="button__text">
-        Add to cart
-      </span>
-     </BaseButton>
-   <div class="controls"
-    v-if="itemInCart.count >= 1">
-     <BaseButton
-       type="button"
-       buttonClass="button-active"
-       @click="decrementCount(product)"
-     >-</BaseButton>
-     <BaseButton
-       type="button"
-       buttonClass="button-active"
-       @click="incrementCount(product)"
-     >+</BaseButton>
-   </div>
-    <span
-      v-if="itemInCart.count >= 1"
-      class="cart__counter"
-    >
-      in cart: <span>{{itemInCart.count}} </span>
-    </span>
-    <span
-      v-if="itemInCart.total == 0"
-      class="cart__counter sold-out"
-    > SOLD OUT </span>
+  <div class="">
+    <div class="controls__group">
+        <BaseButton
+          buttonClass="button-active"
+          v-if="!itemInCart.count"
+          @click.once="addProduct(product)">
+        <span class="button__text">
+          Add to cart
+        </span>
+       </BaseButton>
+       <span
+         v-if="itemInCart.total == 0"
+         class="cart__counter sold-out"
+       > SOLD OUT </span>
+     <div class="controls"
+      v-if="itemInCart.count >= 1">
+       <BaseButton
+         type="button"
+         @click="decrementCount(product)"
+       >-</BaseButton>
+       <span
+         v-if="itemInCart.count >= 1"
+         class="cart__counter"
+       >
+        {{itemInCart.count}}
+       </span>
+       <BaseButton
+         type="button"
+         @click="incrementCount(product)"
+       >+</BaseButton>
+     </div>
+    </div>
   </div>
 </template>
 

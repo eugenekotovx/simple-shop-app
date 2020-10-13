@@ -4,11 +4,13 @@
     :to="{ name: 'product-show', params: { id : product.id, product: product }}"
     >
     <div class="product__wrapper">
+      <img class="product__img"
+      :src="require(`@/assets/img/` + product.name.split(' ').join('_') + '.png')"
+      alt="">
       <div class="product__description">
-        <h3> {{ product.name }}</h3>
-        <h3> PRICE: {{ product.price + '$' }}</h3>
+        <span class="product__name"> {{ product.name }} - </span>
+        <span class="product__price"> {{ product.price + '$' }}</span>
       </div>
-      <img class="product__img" :src="require(`@/assets/img/` + product.name.split(' ').join('_') + '.png')" alt="">
     </div>
    </router-link>
    <ProductControls :product="product"/>
