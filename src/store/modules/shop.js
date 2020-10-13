@@ -40,8 +40,8 @@ export const actions = {
     getProducts({ commit }, {params, perPage, page}) {
         return ShopService.getProducts(params, perPage, page)
         .then(products => {
-          commit('LOAD_PRODUCTS', products)
-          return products
+          commit('LOAD_PRODUCTS', products.data)
+          return products.data
         })
      },
      setCategory({commit}) {
@@ -54,8 +54,8 @@ export const actions = {
        } else {
          return ShopService.getProduct(params)
          .then(product => {
-           commit('SET_PRODUCT', product)
-           return product
+           commit('SET_PRODUCT', product.data)
+           return product.data
           })
          }
        }
