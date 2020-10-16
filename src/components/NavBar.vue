@@ -1,7 +1,7 @@
 <template lang="html">
   <div id="nav">
-    <router-link class="link" to="/shop" exact>Shop</router-link>
-    <router-link class="link" to="/cart" exact>Cart</router-link>
+    <router-link :active-class="'active'" class="link" to="/shop/">Shop</router-link>
+    <router-link :active-class="'active'" class="link" to="/cart" exact>Cart</router-link>
   </div>
 </template>
 
@@ -16,18 +16,35 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
  }
- .link {
-   text-decoration: none;
-   padding: 5px 10px;
-   border-radius: 10px;
-   font-weight: bold;
-   font-size: 16px;
-   color: #1a1a2e;
-   &:hover {
-     background-color: #0f4c75;
-     color: #bbe1fa;
+ .link, {
+   color: #FA4A0C;
+   position: relative;
+   &::before {
+     position: absolute;
+     content: '';
+     height: 2px;
+     background: #FA4A0C;
+     bottom: 0;
+     left: 0;
+     right: 100%;
+     border-radius: 4px;
+   }
+   &:hover::before {
+     right: 0;
      transition: .2s;
+   }
+ }
+  .active::before {
+    right: 0;
+  }
+
+ .cart__icon {
+   position: relative;
+   &:hover {
+     filter: drop-shadow(0px 0px 55px rgba(254, 32, 0, 0.3));
    }
  }
 </style>

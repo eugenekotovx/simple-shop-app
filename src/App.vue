@@ -5,6 +5,14 @@
       <UserMenu/>
     </div>
     <router-view/>
+    <router-link to="/order-create" class="purchase__button">
+      <BaseButton buttonClass="button-active">
+        <BaseIcon
+        :name="'cart'"
+        class="cart__icon"/>
+        Purchase
+      </BaseButton>
+    </router-link>
   </div>
 </template>
 
@@ -32,6 +40,14 @@ a {
   -moz-osx-font-smoothing: grayscale;
   font-weight: bold;
 }
+.cart__icon {
+  margin-right: 10px;
+}
+.purchase__button {
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+}
 .header {
   padding: 30px 0px;
   display: flex;
@@ -42,6 +58,7 @@ a {
 .container {
   max-width: 600px;
   margin: 0 auto;
+  position: relative;
 }
 
 .button {

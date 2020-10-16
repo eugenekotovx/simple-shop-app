@@ -10,13 +10,14 @@
        v-model="order.phoneNumber"
        :class="{ error: $v.order.phoneNumber.$error }"
        @blur="$v.order.phoneNumber.$touch()"
-     />
+       />
      <BaseInput
        type="text"
        v-model="order.address"
        :class="{ error: $v.order.address.$error }"
        @blur="$v.order.address.$touch()"
-       label="Address"/>
+       label="Address"
+       />
      <vSelect
        :options="countries"
        label="name"
@@ -31,7 +32,6 @@
         v-bind="attributes"
         v-on="events"
         @blur="$v.order.country.$touch()"
-
       />
       </template>
      </vSelect>

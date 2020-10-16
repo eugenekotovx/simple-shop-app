@@ -1,17 +1,18 @@
 <template lang="html">
-<div class="">
+  <div class="">
     <div class="product">
-        <h1> {{ shop.product.name }}</h1>
-        <h2>{{ shop.product.price + '$'}}</h2>
-        <div class="product__info">
-            <img class="product__img" :src="require(`@/assets/img/` + shop.product.name.split(' ').join('_') + '.png')" alt="">
-          <p class="product__description">
-            {{shop.product.description}}
-          </p>
-        </div>
+      <div class="product__info">
+        <img class="product__img"
+        :src="require(`@/assets/img/` + shop.product.name.split(' ').join('_') + '.png')">
+        <h1 class="product__name"> {{ shop.product.name }}</h1>
+        <span class="product__price">{{ shop.product.price + '$'}}</span>
+        <p class="product__description">
+          {{shop.product.description}}
+        </p>
       </div>
-      <ProductControls :product="shop.product"/>
-  </div>
+    </div>
+    <ProductControls :product="shop.product"/>
+   </div>
 </template>
 
 <script>
@@ -34,12 +35,20 @@ export default {
   .product {
     display: flex;
     flex-direction: column;
+    &__name {
+      margin: 10px 0;
+    }
+    &__price {
+      color: #FA4A0C;
+    }
     &__info {
       display: flex;
       flex-direction: column;
+      text-align: center;
     }
     &__description {
-      text-align: center;
+      text-align: left;
+      opacity: .5;
     }
     &__img {
       max-width: 40%;

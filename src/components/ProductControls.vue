@@ -60,21 +60,24 @@ export default {
 </script>
 
 <style lang="scss" scoped >
-.cart__counter {
-  max-width: 150px;
-  width: 100%;
-  text-align: center;
-}
-.controls {
-  display: flex;
-  &__group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  .cart__counter {
+    max-width: 150px;
+    text-align: center;
   }
-}
-.sold-out {
-  color: red;
-}
+  .controls {
+    display: flex;
+    background-color: #FA4A0C;
+    color: white;
+    padding: 4px;
+    border-radius: 30px;
+    &__group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .sold-out {
+    color: red;
+    margin-right: 20px;
+  }
 </style>

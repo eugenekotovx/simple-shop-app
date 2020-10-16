@@ -37,27 +37,43 @@ export default {
 </script>
 
 <style lang="scss" scoped >
+
+
   .product__img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
+    margin-left: 15px;
+    filter: drop-shadow(0px 0px 55px rgba(254, 32, 0, .3));
   }
-  .product{
+  .product {
    &__card {
      display: flex;
-     flex-direction: column;
+     flex-direction: row;
+     justify-content: space-between;
      margin-bottom: 40px;
-     border-radius: 25px;
-     padding: 20px 0;
+     border-radius: 30px;
+     padding: 20px 15px;
+     background-color: white;
+     box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+     align-items: center;
      a {
         color: #1a1a2e;
+        flex-grow: 1;
      }
      margin-bottom: 10px;
+   }
+   &__description {
+     margin-left: 20px;
+   }
+   &__price {
+     color: red;
    }
    &__wrapper {
      display: flex;
      flex-direction: row;
-     justify-content: space-between;
      align-items:  center;
+     width: 100%;
    }
-  }
+
+}
 </style>

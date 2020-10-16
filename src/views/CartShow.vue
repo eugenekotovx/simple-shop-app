@@ -1,16 +1,12 @@
 <template lang="html">
   <div class="">
+    <div class="cart__price">
+      Total -
+      {{ cartTotalPrice }}
+    </div>
     <div v-for="product in cart.cart" :key="product.id">
       <ProductCard :product="product" />
     </div>
-    <div class="">
-      {{ cartTotalPrice }}
-    </div>
-    <h2>
-      <router-link to="/order-create">
-        <BaseButton buttonClass="button-active">Purchase</BaseButton>
-      </router-link>
-    </h2>
   </div>
 </template>
 
@@ -29,6 +25,11 @@ export default {
 }
 </script>
 
-<style lang="css" scoped >
-
+<style lang="scss" scoped >
+  .cart__price {
+    color: #FA4A0C;
+    font-size: 26px;
+    text-align: right;
+    margin-bottom: 20px;
+  }
 </style>
