@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="product__card -shadow">
     <router-link
-    :to="{ name: 'product-show', params: { id : product.id, product: product }}"
+    :to="{ name: 'product-show', params: { id : product.id, product: product, category: product.category}}"
     >
     <div class="product__wrapper">
       <img class="product__img"
@@ -37,8 +37,6 @@ export default {
 </script>
 
 <style lang="scss" scoped >
-
-
   .product__img {
     width: 100px;
     height: 100px;

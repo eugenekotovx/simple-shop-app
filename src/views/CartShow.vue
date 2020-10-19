@@ -5,7 +5,7 @@
       {{ cartTotalPrice }}
     </div>
     <div v-for="product in cart.cart" :key="product.id">
-      <ProductCard :product="product" />
+      <ProductCard :product="product" :category="product.category"/>
     </div>
   </div>
 </template>
