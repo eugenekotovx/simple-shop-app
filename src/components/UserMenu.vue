@@ -12,11 +12,19 @@
       </modal>
     </template>
     <router-link
-      :active-class="'link active'" 
+      :active-class="'link active'"
       class="link"
       v-else
       :to="{ name: 'user-show', params: { id : this.$store.state.user.user.id }}">
       Profile
+    </router-link>
+    <router-link to="/order-create" class="purchase__button">
+      <BaseButton buttonClass="button-active">
+        <BaseIcon
+        :name="'cart'"
+        class="cart__icon"/>
+        Purchase
+      </BaseButton>
     </router-link>
   </div>
 </template>
@@ -29,10 +37,15 @@ export default {
   },
   methods: {
     openRegistration() {
-        this.$modal.show('registration');
+      this.$modal.show('registration');
     },
     hideRegistration () {
-        this.$modal.hide('registration');
+      this.$modal.hide('registration');
+    },
+    cheackAuth() {
+      if (this.$store.state.user.user.login === false) {
+        this.openRegistration()
+      }
     }
   }
 }
@@ -43,5 +56,10 @@ export default {
     &__menu {
       display: flex;
     }
+  }
+  .purchase__button {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
   }
 </style>
