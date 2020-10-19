@@ -70,6 +70,7 @@ export default {
       this.$v.$touch()
       if (!this.$v.$invalid) {
         this.$store.dispatch('order/getOrder', this.order)
+        this.$store.dispatch('order/setOrder', this.order)
       }
     },
     createFreshOrder() {

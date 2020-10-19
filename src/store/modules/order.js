@@ -16,7 +16,7 @@ export const mutations = {
   }
 }
 export const actions = {
-  getOrder({commit}, order) {
+  setOrder({commit}, order) {
     return ShopService.setOrder(order)
     .then(() => {
       console.log(order)
