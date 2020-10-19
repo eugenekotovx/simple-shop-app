@@ -8,9 +8,6 @@ export const state = {
 export const mutations = {
   ADD_PRODUCT(state, item) {
     state.cart.push(item)
-  },
-  UPDATE_COUNT(state, item) {
-    state.item = item
   }
 }
 
@@ -24,25 +21,21 @@ export const actions = {
       dispatch('saveCart')
     }
   },
-  incrementCount({commit, dispatch, getters}, item) {
-    var itemInCart = getters.getItemFromCart(item.id)
+  incrementCount({dispatch, getters}, item) {
+    let itemInCart = getters.getItemFromCart(item.id)
     if (itemInCart && itemInCart.total !== 0) {
       itemInCart.count++
       itemInCart.total--
-      itemInCart.totalItemPrice = itemInCart.price * itemInCart.count
-      commit('UPDATE_COUNT', itemInCart)
       dispatch('saveCart')
     }
   },
-  decrementCount({commit, getters, dispatch}, item) {
-    var itemInCart = getters.getItemFromCart(item.id)
+  decrementCount({getters, dispatch}, item) {
+    let itemInCart = getters.getItemFromCart(item.id)
     if (itemInCart.count === 1) {
       state.cart = state.cart.filter((cartItem) => cartItem.id !== item.id)
     }
     itemInCart.count--
     itemInCart.total ++
-    itemInCart.totalItemPrice = itemInCart.price * itemInCart.count
-    commit('UPDATE_COUNT', itemInCart)
     dispatch('saveCart')
   },
   saveCart({state}) {
@@ -52,13 +45,13 @@ export const actions = {
 
 export const getters = {
   cartTotalPrice: state =>  {
-    var totalPrice = 0
+    let totalPrice = 0
     state.cart.forEach(item => {
-      totalPrice += item.totalItemPrice
+      totalPrice += (item.price * item.count)
     })
     return totalPrice + '$'
   },
   getItemFromCart: state => id => {
     return state.cart.find(item => item.id == id)
-  }
+  },
 }
