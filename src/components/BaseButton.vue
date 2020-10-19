@@ -23,9 +23,10 @@ export default {
 <style lang="css" scoped >
   .button-active {
     background: #0f4c75;
+    background: #FA4A0C;
     color: white;
-    padding: 4px 16px;
-    border-radius: 8px;
+    padding: 10px 25px;
+    border-radius: 30px;
   }
   .button__text {
     margin-top: 6px;
