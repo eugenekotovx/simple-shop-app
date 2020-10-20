@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="form">
-    <form @submit.prevent="registerUser"  class="form__container">
-      <h2 class="form__heading">Registration</h2>
+    <h2 class="form__heading note__title">Registration</h2>
+    <form @submit.prevent="registerUser"  class="form__container note">
       <BaseInput
       label="Name:"
       class="form__field"
@@ -16,7 +16,7 @@
       :class="{ error: $v.user.phone.$error }"
       @blur="$v.user.phone.$touch()"
       />
-      <BaseButton buttonClass="button-active" type="submit" name="button">Submit</BaseButton>
+      <slot></slot>
     </form>
   </div>
 </template>
@@ -55,34 +55,5 @@ export default {
 }
 </script>
 
-<style lang="css" scoped >
-  .form {
-    height: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    box-sizing: border-box;
-  }
-  .form__field {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .form__heading {
-    text-align: center;
-  }
-  .form__button {
-    margin: 0 auto;
-  }
-  h2 {
-    margin: 0;
-  }
-  .form__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 0 auto;
-    height: 100%;
-    max-width: 50%;
-  }
+<style lang="css" scoped="">
 </style>

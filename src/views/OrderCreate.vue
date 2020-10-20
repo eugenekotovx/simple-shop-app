@@ -91,8 +91,31 @@ export default {
 </script>
 
 <style lang="scss" scoped >
+  .placeholder, .select-label {
+    opacity: .5;
+  }
+  .field__group {
+    display: flex;
+    justify-content: space-between;
+  }
+  .error {
+    border: 1px solid red;
+  }
   .select {
-    background-color: white;
-    margin-top: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .cart-list {
+    &__item {
+      display: flex;
+      width: 100%;
+      padding-bottom: 4px;
+      border-bottom: 1px solid black;
+      margin-bottom: 10px;
+      opacity: .5;
+    }
+  }
+  .short {
+    max-width: 20%;
   }
 </style>

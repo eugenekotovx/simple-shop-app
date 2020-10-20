@@ -21,15 +21,16 @@ export default {
 </script>
 
 <style lang="css" scoped >
+  .purchase__button {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+  }
   .button-active {
-    background: #0f4c75;
     background: #FA4A0C;
     color: white;
     padding: 10px 25px;
     border-radius: 30px;
-  }
-  .button__text {
-    margin-top: 6px;
   }
   button {
     display: flex;

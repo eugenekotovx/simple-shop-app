@@ -32,6 +32,22 @@ a {
   -moz-osx-font-smoothing: grayscale;
   font-weight: bold;
 }
+.note {
+  background-color: #ffffff;
+  border-radius: 0 0 20px 20px;
+  padding: 20px;
+  margin-bottom: 40px;
+  &__title {
+    background: #EDEDED;
+    margin: 0;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+  }
+  &__wrapper {
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+  }
+}
 .cart__icon {
   margin-right: 10px;
 }
@@ -47,7 +63,10 @@ a {
   margin: 0 auto;
   position: relative;
 }
-
+.global-modal {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
 .button {
   background: none;
   border:  2px solid #0f4c75;

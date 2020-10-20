@@ -51,19 +51,25 @@ export default {
 <style lang="scss" scoped >
   .user {
    &__avatar {
-     width: 200px;
-     height: 200px;
+     width: 150px;
+     height: 150px;
      border-radius: 50%;
      background-color: white;
      margin-right: 50px;
    }
+   &__info {
+     opacity: .5;
+     display: block;
+     padding-top: 7px;
+     padding-bottom: 7px;
+     border-bottom: 1px solid;
+   }
    &__wrapper {
      display: flex;
-     justify-content: flex-start;
-   }
-   &__info {
-     display: flex;
-     flex-direction: column;
+     justify-content: space-around;
+     background-color: white;
+     border-radius: 20px;
+     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
    }
   }
 </style>
