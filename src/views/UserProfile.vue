@@ -1,23 +1,30 @@
 <template lang="html">
-  <div class="user__wrapper">
-    <div class="">
-      <img class="user__avatar"
-      :src="require(`@/assets/img/avatar.png`)" alt="">
+  <div class="">
+    <h1>My profile</h1>
+    <h2>Personal details</h2>
+    <div class="user__wrapper">
+      <div class="">
+        <img class="user__avatar"
+        :src="require(`@/assets/img/avatar.png`)" alt="">
+      </div>
+      <div class="">
+        <h3>
+          {{ user.user.name }}
+        </h3>
+        <span class="user__info">
+          {{ user.user.phone }}
+        </span>
+        <span class="user__info">
+          testtesttest@gmail.com
+        </span>
+      </div>
     </div>
-    <div class="user__info">
-      <label for=""> Name: </label>
-      <span>
-        {{ user.user.name }}
-      </span>
-      <label for="">Phone: </label>
-      <span>
-        {{ user.user.phone }}
-      </span>
+    <h2>
       Orders history:
-      <template v-for="order in user.user.orders">
-        <span  :key="order.id"> {{order.cart}}</span>
-      </template>
-    </div>
+    </h2>
+    <template v-for="order in user.user.orders">
+      <span  :key="order.id"> {{order}}</span>
+    </template>
   </div>
 </template>
 

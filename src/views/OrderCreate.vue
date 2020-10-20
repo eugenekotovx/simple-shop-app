@@ -1,56 +1,94 @@
 <template lang="html">
-  <div class="">
-    <h2>Order details</h2>
-    <div class="cart__list" v-for="product in this.$store.state.cart.cart" :key="product.id">
-      <span> {{ product.name }} - {{'x' + product.count }} - {{product.totalItemPrice + '$'}}</span>
+  <div>
+    <Registration v-if="user.user.login === false">
+      <BaseButton type="submit" buttonClass="button-active"> next </BaseButton>
+    </Registration>
+    <div v-else >
+      <div class="note__wrapper">
+        <h2 class="note__title">Order details:</h2>
+        <div class="note">
+          <div class="cart-list" v-for="product in cart.cart" :key="product.id">
+            <span class="cart-list__item"> {{ product.name }} - {{'x' + product.count }} - {{product.totalItemPrice + '$'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="note__wrapper">
+        <h2 class="note__title">Delivery details:</h2>
+        <form class="note order-form" @submit.prevent="createOrder" disabled>
+          <label class="select-label" for="country-select">Country</label>
+          <vSelect
+          id="country-select"
+          :placeholder="'select country'"
+           :options="countries"
+           label="name"
+           :reduce="country => country.name"
+           :class="{ error: $v.order.address.country.$error }"
+           class="select"
+           v-model="order.address.country"
+          >
+            <template #search="{attributes, events}">
+            <input
+              class="vs__search placeholder"
+              :required="!order.address.country"
+              v-bind="attributes"
+              v-on="events"
+              @blur="$v.order.address.country.$touch()"
+            />
+            </template>
+          </vSelect>
+          <BaseInput
+
+            type="text"
+            v-model="order.address.street"
+            :class="{ error: $v.order.address.street.$error }"
+            @blur="$v.order.address.street.$touch()"
+            label="Street"
+           />
+          <div class="field__group">
+            <BaseInput
+              type="text"
+              v-model="order.address.flat"
+              class="short"
+              :class="{ error: $v.order.address.flat.$error }"
+              @blur="$v.order.address.flat.$touch()"
+              label="flat"
+             />
+            <BaseInput
+              type="text"
+              v-model="order.address.building"
+              class="short"
+              :class="{ error: $v.order.address.building.$error }"
+              @blur="$v.order.address.building.$touch()"
+              label="building"
+            />
+            <BaseInput
+              type="text"
+              v-model="order.address.frontDoor"
+              class="short"
+              label="front door"
+            />
+          </div>
+          <BaseInput
+          label="Coupon code"
+          />
+          <BaseButton type="submit" name="button" buttonClass="button-active form__button">Submit</BaseButton>
+        </form>
+      </div>
     </div>
-    <form class="order-form" @submit.prevent="createOrder">
-     <BaseInput
-       label="Phone Number:"
-       v-model="order.phoneNumber"
-       :class="{ error: $v.order.phoneNumber.$error }"
-       @blur="$v.order.phoneNumber.$touch()"
-       />
-     <BaseInput
-       type="text"
-       v-model="order.address"
-       :class="{ error: $v.order.address.$error }"
-       @blur="$v.order.address.$touch()"
-       label="Address"
-       />
-     <vSelect
-       :options="countries"
-       label="name"
-       :reduce="country => country.name"
-       v-model="order.country"
-       :class="{ error: $v.order.country.$error }"
-     >
-     <template #search="{attributes, events}">
-      <input
-        class="vs__search"
-        :required="!order.country"
-        v-bind="attributes"
-        v-on="events"
-        @blur="$v.order.country.$touch()"
-      />
-      </template>
-     </vSelect>
-     <BaseInput
-     label="Coupon code"
-     />
-    <BaseButton type="submit" name="button">Submit</BaseButton>
-  </form>
   </div>
 </template>
 
 <script>
+import Registration from '@/components/Registration'
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
+import { mapState } from 'vuex'
 import { countries } from '@/components/data/countries.js'
 import { required } from 'vuelidate/lib/validators'
 export default {
   components: {
-    vSelect
+    vSelect,
+    Registration
   },
   data() {
     return {
@@ -60,17 +98,23 @@ export default {
   },
   validations: {
     order: {
-      phoneNumber: { required },
-      country: { required },
-      address: { required }
+      address: {
+        street: {required},
+        country: {required},
+        flat: {required},
+        building: {required}
+      },
     }
+  },
+  computed: {
+    ...mapState(['user', 'cart'])
   },
   methods: {
     createOrder() {
       this.$v.$touch()
       if (!this.$v.$invalid) {
-        this.$store.dispatch('order/getOrder', this.order)
         this.$store.dispatch('order/setOrder', this.order)
+        .then( this.$router.push('/'))
       }
     },
     createFreshOrder() {
@@ -78,10 +122,16 @@ export default {
 
       return {
         userId: this.$store.state.user.user.id,
-        id: id,
+        orderId: id,
         name: this.$store.state.user.user.name,
         phoneNumber: this.$store.state.user.phone,
-        address: '',
+        address: {
+          street: '',
+          country: '',
+          flat: '',
+          frontDoor: '',
+          building: ''
+        },
         country: '',
         cart: this.$store.state.cart.cart
       }

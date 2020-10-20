@@ -7,8 +7,12 @@
         :buttonClass="'button-active'">Registration
       </BaseButton>
       <modal
-      name="registration">
-        <Registration/>
+      :adaptive="true"
+      name="registration"
+      classes='global-modal'>
+      <Registration class="global-registration">
+        <BaseButton buttonClass="button-active form__button"> submit </BaseButton>
+      </Registration>
       </modal>
     </template>
     <router-link
