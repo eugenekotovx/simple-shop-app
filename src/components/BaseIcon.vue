@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="icon-wrapper">
     <svg class="icon" :width="width" :height="height">
-        <use v-bind="{'xlink:href' : '/img/' + name +'.svg#' + name}"/>
+      <use v-bind="{ 'xlink:href': '/img/' + name + '.svg#' + name }" />
     </svg>
     <slot></slot>
   </div>
@@ -10,20 +10,20 @@
 <script>
 export default {
   props: {
-      name: String,
-      width: {
-          type: [Number, String],
-          default: 24
-      },
-      height: {
-          type: [Number, String],
-          default: 24
-      }
-  }
-}
+    name: String,
+    width: {
+      type: [Number, String],
+      default: 24,
+    },
+    height: {
+      type: [Number, String],
+      default: 24,
+    },
+  },
+};
 </script>
 
-<style lang="css" scoped >
+<style lang="css" scoped>
 .icon-wrapper {
   display: inline-flex;
   align-items: center;

@@ -1,39 +1,36 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
-import store from './store'
-import VModal from 'vue-js-modal'
-import 'normalize.css'
-import Vuelidate from 'vuelidate'
-Vue.use(Vuelidate)
-Vue.use(VModal)
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import upperFirst from "lodash/upperFirst";
+import camelCase from "lodash/camelCase";
+import store from "./store";
+import VModal from "vue-js-modal";
+import "normalize.css";
+import Vuelidate from "vuelidate";
+Vue.use(Vuelidate);
+Vue.use(VModal);
 const requireComponent = require.context(
-  './components',
+  "./components",
   false,
   /Base[A-Z]\w+\.(vue|js)$/
-)
+);
 
-requireComponent.keys().forEach(fileName => {
-  const componentConfig = requireComponent(fileName)
+requireComponent.keys().forEach((fileName) => {
+  const componentConfig = requireComponent(fileName);
   const componentName = upperFirst(
     camelCase(
       fileName
-        .split('/')
+        .split("/")
         .pop()
-        .replace(/\.\w+$/, '')
+        .replace(/\.\w+$/, "")
     )
-  )
-  Vue.component(
-    componentName,
-    componentConfig.default || componentConfig
-  )
-})
-Vue.config.productionTip = false
+  );
+  Vue.component(componentName, componentConfig.default || componentConfig);
+});
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

@@ -1,83 +1,79 @@
 <template lang="html">
   <div class="">
     <div class="controls__group">
-        <BaseButton
-          buttonClass="button-active"
-          v-if="!itemInCart.count"
-          @click.once="addProduct(product)">
+      <BaseButton
+        buttonClass="button-active"
+        v-if="!itemInCart.count && product.total != 0"
+        @click.once="addProduct(product)"
+      >
         <span class="button__text">
           Add to cart
         </span>
-       </BaseButton>
-       <span
-         v-if="itemInCart.total == 0"
-         class="cart__counter sold-out"
-       > SOLD OUT </span>
-     <div class="controls"
-      v-if="itemInCart.count >= 1">
-       <BaseButton
-         type="button"
-         @click="decrementCount(product)"
-       >-</BaseButton>
-       <span
-         v-if="itemInCart.count >= 1"
-         class="cart__counter"
-       >
-        {{itemInCart.count}}
-       </span>
-       <BaseButton
-         type="button"
-         @click="incrementCount(product)"
-       >+</BaseButton>
-     </div>
+      </BaseButton>
+      <span v-if="itemInCart.total == 0" class="cart__counter sold-out">
+        SOLD OUT
+      </span>
+      <div class="controls" v-if="itemInCart.count >= 1">
+        <BaseButton type="button" @click="decrementCount(product)"
+          >-</BaseButton
+        >
+        <span v-if="itemInCart.count >= 1" class="cart__counter">
+          {{ itemInCart.count }}
+        </span>
+        <BaseButton type="button" @click="incrementCount(product)"
+          >+</BaseButton
+        >
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from "vuex";
 export default {
   props: {
     product: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     itemInCart() {
-      var item = this.$store.state.cart.cart.find(item => item.id == this.product.id)
+      var item = this.$store.state.cart.cart.find(
+        (item) => item.id == this.product.id
+      );
       if (item) {
-       return item
+        return item;
       } else {
-       return this.product
+        return this.product;
       }
-    }
+    },
   },
   methods: {
-    ...mapActions(['addProduct', 'incrementCount','decrementCount']),
-  }
-}
+    ...mapActions(["addProduct", "incrementCount", "decrementCount"]),
+  },
+};
 </script>
 
-<style lang="scss" scoped >
-  .cart__counter {
-    max-width: 150px;
-    text-align: center;
-  }
-  .controls {
+<style lang="scss" scoped>
+.cart__counter {
+  max-width: 150px;
+  text-align: center;
+}
+.controls {
+  display: flex;
+  background-color: #fa4a0c;
+  color: white;
+  padding: 4px;
+  border-radius: 30px;
+  &__group {
     display: flex;
-    background-color: #FA4A0C;
-    color: white;
-    padding: 4px;
-    border-radius: 30px;
-    &__group {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    align-items: center;
+    justify-content: center;
   }
-  .sold-out {
-    color: red;
-    margin-right: 20px;
-  }
+}
+.sold-out {
+  color: red;
+  margin-right: 20px;
+}
 </style>

@@ -2,57 +2,63 @@
   <div class="">
     <div class="product">
       <div class="product__info">
-        <img class="product__img"
-        :src="require(`@/assets/img/` + shop.product.name.split(' ').join('_') + '.png')">
-        <h1 class="product__name"> {{ shop.product.name }}</h1>
-        <span class="product__price">{{ shop.product.price + '$'}}</span>
+        <img
+          class="product__img"
+          :src="
+            require(`@/assets/img/` +
+              shop.product.name.split(' ').join('_') +
+              '.png')
+          "
+        />
+        <h1 class="product__name">{{ shop.product.name }}</h1>
+        <span class="product__price">{{ shop.product.price + "$" }}</span>
         <p class="product__description">
-          {{shop.product.description}}
+          {{ shop.product.description }}
         </p>
       </div>
     </div>
-    <ProductControls :product="shop.product"/>
-   </div>
+    <ProductControls :product="shop.product" />
+  </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
-import ProductControls from '@/components/ProductControls'
+import { mapActions, mapState } from "vuex";
+import ProductControls from "@/components/ProductControls";
 export default {
   components: {
-    ProductControls
+    ProductControls,
   },
   methods: {
-    ...mapActions(['addProduct'])
+    ...mapActions(["addProduct"]),
   },
   computed: {
-    ...mapState(['shop'])
+    ...mapState(["shop"]),
   },
-}
+};
 </script>
 
-<style lang="scss" scoped >
-  .product {
+<style lang="scss" scoped>
+.product {
+  display: flex;
+  flex-direction: column;
+  &__name {
+    margin: 10px 0;
+  }
+  &__price {
+    color: #fa4a0c;
+  }
+  &__info {
     display: flex;
     flex-direction: column;
-    &__name {
-      margin: 10px 0;
-    }
-    &__price {
-      color: #FA4A0C;
-    }
-    &__info {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-    }
-    &__description {
-      text-align: left;
-      opacity: .5;
-    }
-    &__img {
-      max-width: 40%;
-      margin: 0 auto;
-    }
+    text-align: center;
   }
+  &__description {
+    text-align: left;
+    opacity: 0.5;
+  }
+  &__img {
+    max-width: 40%;
+    margin: 0 auto;
+  }
+}
 </style>
