@@ -69,4 +69,7 @@ a {
   background-color: transparent !important;
   box-shadow: none !important;
 }
+.help-img {
+  width: 100%;
+}
 </style>
