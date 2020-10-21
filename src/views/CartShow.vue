@@ -1,11 +1,21 @@
 <template lang="html">
   <div class="">
-    <div class="cart__price">
-      Total -
-      {{ cartTotalPrice }}
+    <div v-if="cart.cart.length === 0">
+      <h2>Cart is empty ((</h2>
+      <img
+        class="help-img"
+        :src="require('@/assets/img/empty_cart.svg')"
+        alt=""
+      />
     </div>
-    <div v-for="product in cart.cart" :key="product.id">
-      <ProductCard :product="product" :category="product.category" />
+    <div class="" v-else>
+      <div class="cart__price">
+        Total -
+        {{ cartTotalPrice }}
+      </div>
+      <div v-for="product in cart.cart" :key="product.id">
+        <ProductCard :product="product" :category="product.category" />
+      </div>
     </div>
   </div>
 </template>
@@ -16,12 +26,12 @@ import { mapState, mapGetters } from "vuex";
 
 export default {
   components: {
-    ProductCard,
+    ProductCard
   },
   computed: {
     ...mapState(["cart"]),
-    ...mapGetters(["cartTotalPrice"]),
-  },
+    ...mapGetters(["cartTotalPrice"])
+  }
 };
 </script>
 
