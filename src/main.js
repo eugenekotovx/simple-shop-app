@@ -7,6 +7,8 @@ import store from "./store";
 import VModal from "vue-js-modal";
 import "normalize.css";
 import Vuelidate from "vuelidate";
+import VueCarousel from "vue-carousel";
+Vue.use(VueCarousel);
 Vue.use(Vuelidate);
 Vue.use(VModal);
 const requireComponent = require.context(
@@ -15,7 +17,7 @@ const requireComponent = require.context(
   /Base[A-Z]\w+\.(vue|js)$/
 );
 
-requireComponent.keys().forEach((fileName) => {
+requireComponent.keys().forEach(fileName => {
   const componentConfig = requireComponent(fileName);
   const componentName = upperFirst(
     camelCase(
@@ -32,5 +34,5 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount("#app");
