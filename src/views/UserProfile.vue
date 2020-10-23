@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="">
     <h1>My profile</h1>
-    <h2>Personal details</h2>
-    <div class="user__wrapper">
+    <h2 class="note__title">Personal details</h2>
+    <div class="user__wrapper note">
       <div class="">
         <img
           class="user__avatar"
@@ -17,17 +17,20 @@
         <span class="user__info">
           {{ user.user.phone }}
         </span>
-        <span class="user__info">
-          testtesttest@gmail.com
-        </span>
       </div>
     </div>
-    <h2>
+    <h2 class="note__title">
       Orders history:
     </h2>
-    <template v-for="order in user.user.orders">
-      <span :key="order.id"> {{ order }}</span>
-    </template>
+    <div class="note">
+      <div
+        class="order__list"
+        v-for="order in user.user.orders"
+        :key="order.id"
+      >
+        {{ order }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,11 +40,11 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["user", "order"]),
+    ...mapState(["user", "order"])
   },
   data() {
     return {
-      id: this.$store.state.user.user.id,
+      id: this.$store.state.user.user.id
     };
   },
   beforeRouteEnter(routeTo, routeFrom, next) {
@@ -51,10 +54,10 @@ export default {
       });
     } else if (routeTo.params.id !== store.state.user.user.id) {
       next({
-        name: "network-issue",
+        name: "404"
       });
     }
-  },
+  }
 };
 </script>
 
@@ -63,7 +66,7 @@ export default {
   &__avatar {
     width: 150px;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 20px;
     background-color: white;
     margin-right: 50px;
   }
@@ -76,10 +79,8 @@ export default {
   }
   &__wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: white;
-    border-radius: 20px;
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
   }
 }
 </style>
