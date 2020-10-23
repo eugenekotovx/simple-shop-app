@@ -3,58 +3,57 @@ import ShopService from "@/services/ShopService";
 export const namespaced = true;
 
 export const state = {
-  shop: [],
+  categories: [],
   product: {}, // for productShow
-  category: [], // for productsList
-  perPage: 4,
+  products: [], // for products
+  perPage: 4
 };
 
 export const mutations = {
-  SET_CATEGORIES(state, data) {
-    state.shop = data;
+  SET_CATEGORIES(state, categories) {
+    state.categories = categories;
   },
   LOAD_PRODUCTS(state, products) {
-    state.category.push(...products);
+    state.products.push(...products);
   },
   SET_PRODUCTS(state) {
-    state.category = [];
+    state.products = [];
   },
   SET_PRODUCT(state, product) {
     state.product = product;
-  },
+  }
 };
 
 export const actions = {
-  getCategories({ commit, state }) {
-    if (state.shop.length) {
-      return state.shop;
+  getShopData({ commit, state }) {
+    if (state.categories.length) {
+      return state.categories;
     }
     return ShopService.getCategories()
-      .then((response) => {
-        commit("SET_CATEGORIES", response);
+      .then(categories => {
+        commit("SET_CATEGORIES", Object.values(categories.data));
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   },
-  getProducts({ commit }, { params, perPage, page }) {
-    return ShopService.getProducts(params, perPage, page).then((products) => {
+  getProducts({ commit }, { perPage, page, params }) {
+    return ShopService.getProducts(perPage, page, params).then(products => {
       commit("LOAD_PRODUCTS", products.data);
       return products.data;
     });
   },
   setCategory({ commit }) {
     commit("SET_PRODUCTS");
-    return state.category;
   },
   getProduct({ commit, state }, params) {
     if (params.id == state.product.id) {
-      return state.shop.product;
+      return state.categories.product;
     } else {
-      return ShopService.getProduct(params).then((product) => {
+      return ShopService.getProduct(params).then(product => {
         commit("SET_PRODUCT", product.data);
         return product.data;
       });
     }
-  },
+  }
 };
