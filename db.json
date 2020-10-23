@@ -1,4 +1,11 @@
 {
+  "categories": {
+    "FASTFOOD": "Fastfood",
+    "ASIA": "Asia",
+    "FRUITS": "Fruits",
+    "VEGETABLES": "Vegetables",
+    "DRINK": "Drink"
+  },
   "products": [
     {
       "category": "Fastfood",
