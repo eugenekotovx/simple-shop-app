@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="user__menu">
-    <template v-if="this.$store.state.user.user.login === false">
+    <template v-if="user.user.login === false">
       <BaseButton
         type="submit"
         @click="openRegistration"
@@ -22,13 +22,14 @@
       v-else
       :to="{
         name: 'user-show',
-        params: { id: this.$store.state.user.user.id },
+        params: { id: user.user.id },
       }"
     >
       Profile
     </router-link>
-    <router-link to="/order-create" class="purchase__button">
+    <router-link v-if="cart.cart.length >= 1" to="/order-create" class="purchase__button">
       <BaseButton buttonClass="button-active">
+        <span> {{ cartTotalPrice }}, </span>
         <BaseIcon :name="'cart'" class="cart__icon" />
         Purchase
       </BaseButton>
@@ -37,10 +38,15 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import Registration from "@/components/Registration";
 export default {
   components: {
     Registration,
+  },
+  computed: {
+    ...mapState(['user', 'cart']),
+    ...mapGetters(['cartTotalPrice'])
   },
   methods: {
     openRegistration() {
