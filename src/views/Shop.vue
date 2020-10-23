@@ -1,64 +1,102 @@
 <template>
-  <div class="category__wrapper">
-    <div v-for="category in shop.shop" :key="category" class="category__card">
-      <router-link
-        :to="{ name: 'products-list', params: { category: category } }"
-      >
-        <BaseIcon
-          class="category__img"
-          :width="200"
-          :height="200"
-          :name="category"
-        />
-        <h2>
-          {{ category }}
-        </h2>
-      </router-link>
+  <div class="">
+    <h1>Browse by category</h1>
+    <carousel :perPage="3">
+      <slide v-for="category in shop.categories" :key="category">
+        <router-link
+          class="category__card"
+          :to="{ name: 'products-list', params: { category: category } }"
+        >
+          <BaseIcon
+            class="category__img"
+            :width="90"
+            :height="90"
+            :name="category"
+          />
+          <h2>
+            {{ category }}
+          </h2>
+        </router-link>
+      </slide>
+    </carousel>
+    <h1>Browse All</h1>
+    <div class="products">
+      <ProductCard
+        v-for="product in shop.products"
+        :key="product.id"
+        :category="$route.params.category"
+        :product="product"
+      />
+      <infinite-loading @infinite="infiniteHandler" spinner="waveDots">
+        <div slot="no-results">
+          We cant find this products....
+          <router-link class="link" to="/shop">Back to shop page</router-link>
+        </div>
+      </infinite-loading>
     </div>
   </div>
 </template>
 
 <script>
+import store from "@/store/index";
+import InfiniteLoading from "vue-infinite-loading";
 import { mapState } from "vuex";
-
+import ProductCard from "@/components/ProductCard";
 export default {
   name: "Shop",
+  components: {
+    ProductCard,
+    InfiniteLoading
+  },
+  data() {
+    return {
+      currentPage: 1
+    };
+  },
   mounted() {
-    this.$store.dispatch("shop/getCategories");
+    this.$store.dispatch("shop/getShopData");
+  },
+  methods: {
+    infiniteHandler($state) {
+      store
+        .dispatch("shop/getProducts", {
+          perPage: 4,
+          page: this.currentPage
+        })
+        .then(products => {
+          if (products.length) {
+            this.currentPage += 1;
+            $state.loaded();
+          } else {
+            $state.complete();
+            console.log("complete");
+          }
+        });
+    }
+  },
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    store.dispatch("shop/setCategory").then(() => {
+      next();
+    });
   },
   computed: {
-    ...mapState(["shop"]),
-  },
+    ...mapState(["shop"])
+  }
 };
 </script>
 
 <style lang="scss">
 .category {
-  &__wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
   &__card {
     color: #1a1a2e;
     text-decoration: none;
     background: #ffffff;
     display: flex;
-    margin-right: 6px;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
     margin-bottom: 20px;
     border-radius: 30px;
-    box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
-    a {
-      text-decoration: none;
-      color: #1a1a2e;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-  &__img {
-    filter: drop-shadow(0px 40px 40px rgba(0, 0, 0, 0.07));
   }
 }
 </style>
