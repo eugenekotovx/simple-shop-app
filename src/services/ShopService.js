@@ -16,18 +16,18 @@ export default {
       return categories;
     });
   },
-  getProducts(perPage, page) {
+  getProducts(perPage, page, params) {
+    if (params) {
+      return shopApi.get(
+        "/products/?category=" +
+          params.category +
+          "&_limit=" +
+          perPage +
+          "&_page=" +
+          page
+      );
+    }
     return shopApi.get("/products?_limit=" + perPage + "&_page=" + page);
-  },
-  getCategoryProducts(params, perPage, page) {
-    return shopApi.get(
-      "/products/?category=" +
-        params.category +
-        "&_limit=" +
-        perPage +
-        "&_page=" +
-        page
-    );
   },
   getProduct(params) {
     return shopApi.get("/products/" + params.id).then(product => {
