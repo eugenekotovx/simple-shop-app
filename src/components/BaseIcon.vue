@@ -23,19 +23,26 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss">
 .icon-wrapper {
-  display: inline-flex;
   align-items: center;
   color: rgba(0, 0, 0, 0.4);
   font-size: 1rem;
   font-weight: 600;
 }
 .icon {
-  stroke: currentColor;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  fill: none;
+}
+.menu__icon {
+  position: relative;
+  opacity: 0.3;
+  svg {
+    fill: black;
+  }
+  &:hover {
+    filter: drop-shadow(0px 0px 55px rgba(254, 32, 0, 0.3));
+  }
 }
 </style>

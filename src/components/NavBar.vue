@@ -23,8 +23,12 @@ export default {};
   margin-right: 10px;
 }
 .link {
-  color: #fa4a0c;
+  color: #1a1a2e;
   position: relative;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
   &::before {
     position: absolute;
     content: "";
@@ -34,19 +38,27 @@ export default {};
     left: 0;
     right: 100%;
     border-radius: 4px;
+    opacity: .5;
   }
   &:hover::before {
     right: 0;
     transition: 0.2s;
   }
+  &:hover {
+  }
+  &__text {
+    font-size: 20px;
+    margin-left: 10px;
+  }
 }
 .active::before {
   right: 0;
 }
-.cart__icon {
-  position: relative;
-  &:hover {
-    filter: drop-shadow(0px 0px 55px rgba(254, 32, 0, 0.3));
-  }
-}
+@media screen and (max-width: 768px) {
+    .link {
+      &__text {
+        display: none;
+      }
+    }
+   }
 </style>

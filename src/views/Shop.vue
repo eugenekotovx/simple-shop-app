@@ -2,8 +2,13 @@
   <div class="">
     <h1>Browse by category</h1>
     <carousel :perPage="3">
-      <slide v-for="category in shop.categories" :key="category">
+      <slide
+        v-for="category in shop.categories"
+        :key="category"
+        class="category__wrapper"
+      >
         <router-link
+          tag="div"
           class="category__card"
           :to="{ name: 'products-list', params: { category: category } }"
         >
@@ -92,11 +97,20 @@ export default {
     text-decoration: none;
     background: #ffffff;
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     margin-right: 20px;
     margin-bottom: 20px;
     border-radius: 30px;
+    bottom: 0;
+    &:hover {
+      transition: 0.3s ease;
+      bottom: 10px;
+    }
+  }
+  &__wrapper {
+    padding: 15px 0;
   }
 }
 </style>

@@ -15,14 +15,14 @@
       </span>
       <div class="controls" v-if="itemInCart.count >= 1">
         <BaseButton type="button" @click="decrementCount(product)"
-          >-</BaseButton
+          ><span class="button__text"> - </span></BaseButton
         >
         <span v-if="itemInCart.count >= 1" class="cart__counter">
           {{ itemInCart.count }}
         </span>
-        <BaseButton type="button" @click="incrementCount(product)"
-          >+</BaseButton
-        >
+        <BaseButton type="button" @click="incrementCount(product)">
+          <span class="button__text"> + </span>
+        </BaseButton>
       </div>
     </div>
   </div>
@@ -34,24 +34,24 @@ export default {
   props: {
     product: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   computed: {
     itemInCart() {
       var item = this.$store.state.cart.cart.find(
-        (item) => item.id == this.product.id
+        item => item.id == this.product.id
       );
       if (item) {
         return item;
       } else {
         return this.product;
       }
-    },
+    }
   },
   methods: {
-    ...mapActions(["addProduct", "incrementCount", "decrementCount"]),
-  },
+    ...mapActions(["addProduct", "incrementCount", "decrementCount"])
+  }
 };
 </script>
 

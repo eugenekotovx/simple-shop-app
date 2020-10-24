@@ -72,4 +72,19 @@ a {
 .help-img {
   width: 100%;
 }
+@media screen and (max-width: 768px) {
+    .container {
+      padding: 0 20px;
+    }
+    .header {
+      background-color: #f5f5f8;
+      border-radius: 0 0 20px 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      position: fixed;
+      width: 100%;
+      top: 0px;
+      left: -20px;
+    }
+   }
 </style>

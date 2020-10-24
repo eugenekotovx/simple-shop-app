@@ -11,13 +11,13 @@ export default {
   inheritAttrs: false,
   props: {
     buttonClass: {
-      type: String,
-    },
-  },
+      type: String
+    }
+  }
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .purchase__button {
   position: fixed;
   bottom: 30px;
@@ -27,7 +27,16 @@ export default {
   background: #fa4a0c;
   color: white;
   padding: 10px 25px;
-  border-radius: 30px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+  &:hover {
+    opacity: .7;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 10px;
+    transition: .4s;
+  }
+}
+.button__text {
+  color: #ffffff;
 }
 button {
   display: flex;
