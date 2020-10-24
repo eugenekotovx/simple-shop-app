@@ -1,7 +1,11 @@
 <template>
   <div class="">
     <h1>Browse by category</h1>
-    <carousel :perPage="3">
+    <carousel
+      :perPageCustom="[[576, 3]]"
+      paginationActiveColor="#fa4a0c"
+      paginationColor="#1a1a2e"
+    >
       <slide
         v-for="category in shop.categories"
         :key="category"
