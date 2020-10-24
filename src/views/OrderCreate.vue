@@ -24,7 +24,7 @@
             :placeholder="'select country'"
             :options="countries"
             label="name"
-            :reduce="(country) => country.name"
+            :reduce="country => country.name"
             :class="{ error: $v.order.address.country.$error }"
             class="select"
             v-model="order.address.country"
@@ -93,12 +93,12 @@ import { required } from "vuelidate/lib/validators";
 export default {
   components: {
     vSelect,
-    Registration,
+    Registration
   },
   data() {
     return {
       order: this.createFreshOrder(),
-      countries: countries,
+      countries: countries
     };
   },
   validations: {
@@ -107,12 +107,12 @@ export default {
         street: { required },
         country: { required },
         flat: { required },
-        building: { required },
-      },
-    },
+        building: { required }
+      }
+    }
   },
   computed: {
-    ...mapState(["user", "cart"]),
+    ...mapState(["user", "cart"])
   },
   methods: {
     createOrder() {
@@ -120,7 +120,7 @@ export default {
       if (!this.$v.$invalid) {
         this.$store
           .dispatch("order/setOrder", this.order)
-          .then(this.$router.push("/"));
+          .then(this.$router.push("/shop"));
       }
     },
     createFreshOrder() {
@@ -136,13 +136,13 @@ export default {
           country: "",
           flat: "",
           frontDoor: "",
-          building: "",
+          building: ""
         },
         country: "",
-        cart: this.$store.state.cart.cart,
+        cart: this.$store.state.cart.cart
       };
-    },
-  },
+    }
+  }
 };
 </script>
 
