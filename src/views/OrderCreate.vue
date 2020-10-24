@@ -1,85 +1,93 @@
 <template lang="html">
   <div>
-    <Registration v-if="user.user.login === false">
-      <BaseButton type="submit" buttonClass="button-active"> next </BaseButton>
-    </Registration>
-    <div v-else>
-      <div class="note__wrapper">
-        <h2 class="note__title">Order details:</h2>
-        <div class="note">
-          <div class="cart-list" v-for="product in cart.cart" :key="product.id">
-            <span class="cart-list__item">
-              {{ product.name }} - {{ "x" + product.count }} -
-              {{ product.totalItemPrice + "$" }}</span
+    <transition name="fade" mode="out-in">
+      <Registration v-if="user.user.login === false">
+        <BaseButton type="submit" buttonClass="button-active">
+          next
+        </BaseButton>
+      </Registration>
+      <div v-else>
+        <div class="note__wrapper">
+          <h2 class="note__title">Order details:</h2>
+          <div class="note">
+            <div
+              class="cart-list"
+              v-for="product in cart.cart"
+              :key="product.id"
             >
+              <span class="cart-list__item">
+                {{ product.name }} - {{ "x" + product.count }} -
+                {{ product.totalItemPrice + "$" }}</span
+              >
+            </div>
           </div>
         </div>
-      </div>
-      <div class="note__wrapper">
-        <h2 class="note__title">Delivery details:</h2>
-        <form class="note order-form" @submit.prevent="createOrder" disabled>
-          <label class="select-label" for="country-select">Country</label>
-          <vSelect
-            id="country-select"
-            :placeholder="'select country'"
-            :options="countries"
-            label="name"
-            :reduce="country => country.name"
-            :class="{ error: $v.order.address.country.$error }"
-            class="select"
-            v-model="order.address.country"
-          >
-            <template #search="{attributes, events}">
-              <input
-                class="vs__search placeholder"
-                :required="!order.address.country"
-                v-bind="attributes"
-                v-on="events"
-                @blur="$v.order.address.country.$touch()"
+        <div class="note__wrapper">
+          <h2 class="note__title">Delivery details:</h2>
+          <form class="note order-form" @submit.prevent="createOrder" disabled>
+            <label class="select-label" for="country-select">Country</label>
+            <vSelect
+              id="country-select"
+              :placeholder="'select country'"
+              :options="countries"
+              label="name"
+              :reduce="country => country.name"
+              :class="{ error: $v.order.address.country.$error }"
+              class="select"
+              v-model="order.address.country"
+            >
+              <template #search="{attributes, events}">
+                <input
+                  class="vs__search placeholder"
+                  :required="!order.address.country"
+                  v-bind="attributes"
+                  v-on="events"
+                  @blur="$v.order.address.country.$touch()"
+                />
+              </template>
+            </vSelect>
+            <BaseInput
+              type="text"
+              v-model="order.address.street"
+              :class="{ error: $v.order.address.street.$error }"
+              @blur="$v.order.address.street.$touch()"
+              label="Street"
+            />
+            <div class="field__group">
+              <BaseInput
+                type="text"
+                v-model="order.address.flat"
+                class="short"
+                :class="{ error: $v.order.address.flat.$error }"
+                @blur="$v.order.address.flat.$touch()"
+                label="flat"
               />
-            </template>
-          </vSelect>
-          <BaseInput
-            type="text"
-            v-model="order.address.street"
-            :class="{ error: $v.order.address.street.$error }"
-            @blur="$v.order.address.street.$touch()"
-            label="Street"
-          />
-          <div class="field__group">
-            <BaseInput
-              type="text"
-              v-model="order.address.flat"
-              class="short"
-              :class="{ error: $v.order.address.flat.$error }"
-              @blur="$v.order.address.flat.$touch()"
-              label="flat"
-            />
-            <BaseInput
-              type="text"
-              v-model="order.address.building"
-              class="short"
-              :class="{ error: $v.order.address.building.$error }"
-              @blur="$v.order.address.building.$touch()"
-              label="building"
-            />
-            <BaseInput
-              type="text"
-              v-model="order.address.frontDoor"
-              class="short"
-              label="front door"
-            />
-          </div>
-          <BaseInput label="Coupon code" />
-          <BaseButton
-            type="submit"
-            name="button"
-            buttonClass="button-active form__button"
-            >Submit</BaseButton
-          >
-        </form>
+              <BaseInput
+                type="text"
+                v-model="order.address.building"
+                class="short"
+                :class="{ error: $v.order.address.building.$error }"
+                @blur="$v.order.address.building.$touch()"
+                label="building"
+              />
+              <BaseInput
+                type="text"
+                v-model="order.address.frontDoor"
+                class="short"
+                label="front door"
+              />
+            </div>
+            <BaseInput label="Coupon code" />
+            <BaseButton
+              type="submit"
+              name="button"
+              buttonClass="button-active form__button"
+              >Submit</BaseButton
+            >
+          </form>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -174,5 +182,13 @@ export default {
 }
 .short {
   max-width: 20%;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
