@@ -6,6 +6,15 @@
     <router-link :active-class="'active'" class="link" to="/cart" exact
       >Cart</router-link
     >
+      <BaseIcon :name="'shop'" :width="24" :height="24" class="menu__icon" />
+      <span class="link__text">
+        Shop
+      </span>
+      <BaseIcon :width="24" :height="24" :name="'cart'" class="menu__icon" />
+      <span class="link__text">
+        Cart
+      </span>
+    </router-link>
   </div>
 </template>
 
