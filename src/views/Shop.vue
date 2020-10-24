@@ -104,7 +104,8 @@ export default {
     position: relative;
     flex-direction: column;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
     margin-bottom: 20px;
     border-radius: 30px;
     bottom: 0;
@@ -115,6 +116,7 @@ export default {
   }
   &__wrapper {
     padding: 15px 0;
+    cursor: pointer;
   }
 }
 </style>

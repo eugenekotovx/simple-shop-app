@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="product__card -shadow">
     <router-link
+      class="route"
       tag="div"
       :to="{
         name: 'product-show',
@@ -8,7 +9,7 @@
           id: product.id,
           product: product,
           category: product.category
-        },
+        }
       }"
     >
       <div class="product__wrapper">
@@ -67,10 +68,6 @@ export default {
     background-color: white;
     box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
     align-items: center;
-    a {
-      color: #1a1a2e;
-      flex-grow: 1;
-    }
     margin-bottom: 10px;
   }
   &__description {
@@ -83,7 +80,10 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
   }
+}
+.route {
+  flex-grow: 1;
+  cursor: pointer;
 }
 </style>
