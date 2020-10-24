@@ -1,15 +1,12 @@
 <template lang="html">
   <div id="nav">
-    <router-link :active-class="'active'" class="link" to="/shop/"
-      >Shop</router-link
-    >
-    <router-link :active-class="'active'" class="link" to="/cart" exact
-      >Cart</router-link
-    >
+    <router-link tag="div" :active-class="'active'" class="link" to="/shop/">
       <BaseIcon :name="'shop'" :width="24" :height="24" class="menu__icon" />
       <span class="link__text">
         Shop
       </span>
+    </router-link>
+    <router-link tag="div" :active-class="'active'" class="link" to="/cart" exact>
       <BaseIcon :width="24" :height="24" :name="'cart'" class="menu__icon" />
       <span class="link__text">
         Cart

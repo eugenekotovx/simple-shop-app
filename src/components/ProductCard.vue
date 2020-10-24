@@ -1,12 +1,13 @@
 <template lang="html">
   <div class="product__card -shadow">
     <router-link
+      tag="div"
       :to="{
         name: 'product-show',
         params: {
           id: product.id,
           product: product,
-          category: product.category,
+          category: product.category
         },
       }"
     >
@@ -34,17 +35,17 @@
 import ProductControls from "@/components/ProductControls";
 export default {
   components: {
-    ProductControls,
+    ProductControls
   },
   props: {
     product: {
       type: Object,
-      required: true,
+      required: true
     },
     category: {
-      type: String,
-    },
-  },
+      type: String
+    }
+  }
 };
 </script>
 
