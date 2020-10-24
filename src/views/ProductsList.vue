@@ -3,7 +3,7 @@
     <h1>{{ $route.params.category }}</h1>
     <div class="products">
       <ProductCard
-        v-for="product in shop.category"
+        v-for="product in shop.products"
         :key="product.id"
         :category="$route.params.category"
         :product="product"
@@ -38,9 +38,9 @@ export default {
     infiniteHandler($state) {
       store
         .dispatch("shop/getProducts", {
-          params: this.$route.params,
           perPage: 4,
           page: this.currentPage,
+          params: this.$route.params
         })
         .then((products) => {
           if (products.length) {
