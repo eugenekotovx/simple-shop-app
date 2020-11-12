@@ -2,7 +2,7 @@
   <div class="">
     <div class="controls__group">
       <BaseButton
-        buttonClass="button-active"
+        buttonClass="button-active product__button"
         v-if="!itemInCart.count && product.total != 0"
         @click.once="addProduct(product)"
       >
@@ -50,7 +50,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["addProduct", "incrementCount", "decrementCount"])
+    ...mapActions('cart', ["addProduct", "incrementCount", "decrementCount"])
   }
 };
 </script>
@@ -65,7 +65,13 @@ export default {
   background-color: #fa4a0c;
   color: white;
   padding: 4px;
-  border-radius: 30px;
+  border-radius: 5px;
+  font-size: 20px;
+  &:hover {
+    opacity: .7;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 5px;
+    transition: .4s;
+  }
   &__group {
     display: flex;
     align-items: center;
@@ -75,5 +81,15 @@ export default {
 .sold-out {
   color: red;
   margin-right: 20px;
+}
+@media screen and (max-width: 576px) {
+  .controls__group {
+    margin-top: 20px;
+    flex-direction: column;
+  }
+  .sold-out {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
 }
 </style>

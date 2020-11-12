@@ -1,13 +1,13 @@
 <template lang="html">
   <div id="nav">
     <router-link tag="div" :active-class="'active'" class="link" to="/shop/">
-      <BaseIcon :name="'shop'" :width="24" :height="24" class="menu__icon" />
+      <BaseIcon :name="'shop'" :width="24" :height="24" :iconClass="'menu__icon icon'" />
       <span class="link__text">
         Shop
       </span>
     </router-link>
     <router-link tag="div" :active-class="'active'" class="link" to="/cart" exact>
-      <BaseIcon :width="24" :height="24" :name="'cart'" class="menu__icon" />
+      <BaseIcon :width="24" :height="24" :name="'cart'" :iconClass="'menu__icon icon'" />
       <span class="link__text">
         Cart
       </span>
@@ -15,17 +15,13 @@
   </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style lang="scss">
 #nav {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-grow: 1;
   margin-right: 10px;
 }
 .link {
@@ -60,6 +56,19 @@ export default {};
 .active::before {
   right: 0;
 }
+.active .menu__icon {
+  opacity: 1;
+}
+
+.active {
+  color: #fa4a0c;
+}
+
+.active .menu__icon {
+  stroke: #fa4a0c;
+  fill: #fa4a0c;
+}
+
 @media screen and (max-width: 768px) {
     .link {
       &__text {

@@ -69,9 +69,14 @@ export default {
     box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
     align-items: center;
     margin-bottom: 10px;
+    &:hover {
+      box-shadow: 5px 30px 60px rgba(57, 57, 57, 0.2);
+      transition: .4s;
+    }
   }
   &__description {
     margin-left: 20px;
+    font-size: 20px;
   }
   &__price {
     color: red;
@@ -85,5 +90,12 @@ export default {
 .route {
   flex-grow: 1;
   cursor: pointer;
+}
+@media screen and (max-width: 576px) {
+  .product {
+    &__card {
+      flex-direction: column;
+    }
+  }
 }
 </style>

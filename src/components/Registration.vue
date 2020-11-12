@@ -9,6 +9,9 @@
         :class="{ error: $v.user.name.$error }"
         @blur="$v.user.name.$touch()"
       />
+      <span class="error-message" v-if="$v.user.name.$error"
+        >*This field is required</span
+      >
       <BaseInput
         label="Phone:"
         class="form__field"
@@ -16,6 +19,9 @@
         :class="{ error: $v.user.phone.$error }"
         @blur="$v.user.phone.$touch()"
       />
+      <span class="error-message" v-if="$v.user.phone.$error"
+        >*This field is required</span
+      >
       <slot></slot>
     </form>
   </div>

@@ -39,9 +39,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.error {
-  border: red 1px solid;
+<style lang="scss">
+.error-message {
+  font-size: 12px;
+  opacity: .5;
+  color: #fa4a0c;
 }
 .base-input {
   background: transparent;
@@ -52,8 +54,8 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-top: 20px;
   }
   &__label {
     opacity: 0.5;

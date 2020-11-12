@@ -1,9 +1,7 @@
 <template lang="html">
-  <div class="">
     <button v-on="$listeners" :class="buttonClass" v-bind="$attrs">
       <slot />
     </button>
-  </div>
 </template>
 
 <script>
@@ -18,11 +16,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.purchase__button {
-  position: fixed;
-  bottom: 30px;
-  right: 50px;
-}
+
 .button-active {
   background: #fa4a0c;
   color: white;
@@ -41,9 +35,16 @@ export default {
 button {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  align-content: stretch;
   cursor: pointer;
   background: none;
   outline: none;
   border: none;
 }
+
+.form__button {
+  margin-top: 20px;
+}
+
 </style>

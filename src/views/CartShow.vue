@@ -1,12 +1,15 @@
 <template lang="html">
   <div class="">
-    <div v-if="cart.cart.length === 0">
-      <h2>Cart is empty ((</h2>
+    <div class="help" v-if="cart.cart.length === 0">
       <img
         class="help-img"
         :src="require('@/assets/img/empty_cart.svg')"
         alt=""
       />
+      <h2>Cart is empty</h2>
+      <router-link tag="div" to="/shop">
+        <BaseButton buttonClass="button-active"> Back to shop page </baseButton>
+      </router-link>
     </div>
     <div class="" v-else>
       <div class="cart__price">
@@ -30,12 +33,15 @@ export default {
   },
   computed: {
     ...mapState(["cart"]),
-    ...mapGetters(["cartTotalPrice"])
+    ...mapGetters('cart', ["cartTotalPrice"])
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.help {
+  margin-top: 100px;
+}
 .cart__price {
   color: #fa4a0c;
   font-size: 26px;
