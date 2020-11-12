@@ -1,26 +1,30 @@
 <template>
-  <div id="app" class="container">
+  <div id="app">
     <div class="header">
       <NavBar />
       <UserMenu />
     </div>
-    <router-view />
+    <router-view  class="container"/>
+    <NavigationControls/>
   </div>
 </template>
 
 <script type="text/javascript">
 import UserMenu from "@/components/UserMenu";
 import NavBar from "@/components/NavBar";
+import NavigationControls from "@/components/NavigationControls"
 export default {
   components: {
     NavBar,
     UserMenu,
-  },
+    NavigationControls
+  }
 };
 </script>
 <style lang="scss">
 body {
   background-color: #f5f5f8;
+  height: 100%;
 }
 a {
   text-decoration: none;
@@ -50,6 +54,16 @@ a {
     border-radius: 20px;
   }
 }
+.note-list {
+  &__item {
+    display: flex;
+    width: 100%;
+    padding-bottom: 4px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    opacity: 0.5;
+  }
+}
 .cart__icon {
   margin-right: 10px;
 }
@@ -59,6 +73,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 }
 .container {
   max-width: 600px;
@@ -70,21 +85,35 @@ a {
   box-shadow: none !important;
 }
 .help-img {
-  width: 100%;
+  width: 40%;
+  display: block;
+  margin: 0 auto;
+}
+.help {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (min-width: 576px) {
+  .header {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 @media screen and (max-width: 768px) {
-    .container {
-      padding: 0 20px;
-    }
-    .header {
-      background-color: #f5f5f8;
-      border-radius: 0 0 20px 20px;
-      padding-left: 20px;
-      padding-right: 20px;
-      position: fixed;
-      width: 100%;
-      top: 0px;
-      left: -20px;
-    }
-   }
+  .container {
+    padding: 0 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .header {
+    background-color: #f5f5f8;
+    border-radius: 0 0 20px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    padding: 20px 20px;
+    box-sizing: border-box;
+  }
+}
 </style>
