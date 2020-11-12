@@ -98,4 +98,8 @@ export default {
     }
   }
 }
+.route {
+  flex-grow: 1;
+  cursor: pointer;
+}
 </style>
