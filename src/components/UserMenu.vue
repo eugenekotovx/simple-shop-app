@@ -26,36 +26,23 @@
         params: { id: user.user.id }
       }"
     >
-      <BaseIcon :width="24" :height="24" :name="'user'" class="menu__icon" />
+      <BaseIcon :width="24" :height="24" :name="'user'" :iconClass="'menu__icon icon'" />
       <span class="link__text">
         Profile
       </span>
-    </router-link>
-    <router-link
-      tag="div"
-      v-if="cart.cart.length >= 1"
-      to="/order-create"
-      class="purchase__button"
-    >
-      <BaseButton buttonClass="button-active">
-        <span> {{ cartTotalPrice }}, </span>
-        <span class="button__text"> Purchase </span>
-        <BaseIcon :name="'arrow'" :width="20" :height="20" class="arrow__icon" />
-      </BaseButton>
     </router-link>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 import Registration from "@/components/Registration";
 export default {
   components: {
     Registration
   },
   computed: {
-    ...mapState(["user", "cart"]),
-    ...mapGetters(["cartTotalPrice"])
+    ...mapState(["user"])
   },
   methods: {
     openRegistration() {
@@ -73,16 +60,5 @@ export default {
   &__menu {
     display: flex;
   }
-}
-.arrow__icon {
-  margin-left: 15px;
-}
-.purchase__button {
-  position: fixed;
-  bottom: 30px;
-  right: 50px;
-}
-.button__text {
-  margin-left: 5px;
 }
 </style>
