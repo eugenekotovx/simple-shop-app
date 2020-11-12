@@ -87,6 +87,46 @@
           </form>
         </div>
       </div>
+      <div v-else-if="showBill">
+        <div class="note__wrapper">
+          <div class="note__title">
+            Bill details
+          </div>
+          <div class="note">
+            <div class="note-list">
+              <div class="note-list__item">
+                {{ "Date: " + order.date }}
+              </div>
+              <div class="note-list__item">
+                {{ "Name: " + order.name }}
+              </div>
+              <div class="note-list__item">
+                {{ "Phone number: " + order.phoneNumber }}
+              </div>
+              <div class="note-list__item">
+                {{ order.address.country }},
+                {{ order.address.street + " street" }},
+                {{ "flat " + order.address.flat }},
+                {{ "building " + order.address.building }}
+              </div>
+              <template v-for="product in order.cart">
+                <span class="note-list__item" :key="product.id"
+                  >{{ product.name }} - {{ "x" + product.count }} -
+                  {{ product.totalItemPrice + "$" }}</span
+                >
+              </template>
+              <span class="note-list__item total-price">
+                Total: {{ order.totalPrice }}
+              </span>
+              <router-link tag="div" to="/shop" class="purchase__button">
+                <BaseButton buttonClass="button-active">
+                  Back to shop page
+                </BaseButton>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
     </transition>
   </div>
 </template>
