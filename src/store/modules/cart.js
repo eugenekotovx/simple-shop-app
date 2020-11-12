@@ -1,16 +1,21 @@
 import Vue from "vue";
 
+export const namespaced = true;
+
 export const state = {
   cart: JSON.parse(localStorage.getItem("cart"))
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
-  cartCounter: 0,
+  cartCounter: 0
 };
 
 export const mutations = {
   ADD_PRODUCT(state, item) {
     state.cart.push(item);
   },
+  REFRESH_CART(state) {
+    state.cart = [];
+  }
 };
 
 export const actions = {
@@ -34,7 +39,7 @@ export const actions = {
   decrementCount({ getters, dispatch }, item) {
     let itemInCart = getters.getItemFromCart(item.id);
     if (itemInCart.count === 1) {
-      state.cart = state.cart.filter((cartItem) => cartItem.id !== item.id);
+      state.cart = state.cart.filter(cartItem => cartItem.id !== item.id);
     }
     itemInCart.count--;
     itemInCart.total++;
@@ -43,17 +48,21 @@ export const actions = {
   saveCart({ state }) {
     localStorage.setItem("cart", JSON.stringify(state.cart));
   },
+  refreshCart({ commit, dispatch }) {
+    commit("REFRESH_CART");
+    dispatch("saveCart");
+  }
 };
 
 export const getters = {
-  cartTotalPrice: (state) => {
+  cartTotalPrice: state => {
     let totalPrice = 0;
-    state.cart.forEach((item) => {
+    state.cart.forEach(item => {
       totalPrice += item.price * item.count;
     });
     return totalPrice + "$";
   },
-  getItemFromCart: (state) => (id) => {
-    return state.cart.find((item) => item.id == id);
-  },
+  getItemFromCart: state => id => {
+    return state.cart.find(item => item.id == id);
+  }
 };
