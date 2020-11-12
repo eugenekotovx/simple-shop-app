@@ -6,20 +6,21 @@
           next
         </BaseButton>
       </Registration>
-      <div v-else>
+      <div v-else-if="user.user.login === true && showBill === false">
         <div class="note__wrapper">
           <h2 class="note__title">Order details:</h2>
           <div class="note">
             <div
-              class="cart-list"
+              class="note-list"
               v-for="product in cart.cart"
               :key="product.id"
             >
-              <span class="cart-list__item">
+              <span class="note-list__item">
                 {{ product.name }} - {{ "x" + product.count }} -
                 {{ product.totalItemPrice + "$" }}</span
               >
             </div>
+            <span class="total-price"> Total: {{ cartTotalPrice }} </span>
           </div>
         </div>
         <div class="note__wrapper">
@@ -46,6 +47,9 @@
                 />
               </template>
             </vSelect>
+            <span class="error-message" v-if="$v.order.address.country.$error"
+              >*This field is required</span
+            >
             <BaseInput
               type="text"
               v-model="order.address.street"
@@ -53,23 +57,35 @@
               @blur="$v.order.address.street.$touch()"
               label="Street"
             />
+            <span class="error-message" v-if="$v.order.address.street.$error"
+              >*This field is required</span
+            >
             <div class="field__group">
-              <BaseInput
-                type="text"
-                v-model="order.address.flat"
-                class="short"
-                :class="{ error: $v.order.address.flat.$error }"
-                @blur="$v.order.address.flat.$touch()"
-                label="flat"
-              />
-              <BaseInput
-                type="text"
-                v-model="order.address.building"
-                class="short"
-                :class="{ error: $v.order.address.building.$error }"
-                @blur="$v.order.address.building.$touch()"
-                label="building"
-              />
+              <div class="short">
+                <BaseInput
+                  type="text"
+                  v-model="order.address.flat"
+                  :class="{ error: $v.order.address.flat.$error }"
+                  @blur="$v.order.address.flat.$touch()"
+                  label="flat"
+                />
+                <span class="error-message" v-if="$v.order.address.flat.$error"
+                  >*This field is required</span
+                >
+              </div>
+              <div class="short">
+                <BaseInput
+                  type="text"
+                  v-model="order.address.building"
+                  :class="{ error: $v.order.address.building.$error }"
+                  @blur="$v.order.address.building.$touch()"
+                  label="building"
+                /><span
+                  class="error-message"
+                  v-if="$v.order.address.building.$error"
+                  >*This field is required</span
+                >
+              </div>
               <BaseInput
                 type="text"
                 v-model="order.address.frontDoor"
@@ -135,9 +151,38 @@
 import Registration from "@/components/Registration";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
-import { mapState } from "vuex";
+import store from '@/store/index';
+import { mapState, mapGetters } from "vuex";
 import { countries } from "@/components/data/countries.js";
 import { required } from "vuelidate/lib/validators";
+
+const dateFormatter = (createdAt) => {
+  let date = new Date(createdAt);
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let dt = date.getDate();
+  let hours = date.getHours();
+  let mins = date.getMinutes();
+
+  if (mins < 10) {
+    mins = "0" + mins;
+  }
+
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+
+  if (dt < 10) {
+    dt = "0" + dt;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+  let result = year + "-" + month + "-" + dt + " " + hours + ":" + mins;
+  return result;
+};
+
+
 export default {
   components: {
     vSelect,
@@ -146,8 +191,14 @@ export default {
   data() {
     return {
       order: this.createFreshOrder(),
-      countries: countries
+      countries: countries,
+      showBill: false,
+      tot: this.cartTotalPrice
     };
+  },
+  computed: {
+    ...mapState(["user", "cart"]),
+    ...mapGetters('cart', ["cartTotalPrice"])
   },
   validations: {
     order: {
@@ -159,26 +210,26 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapState(["user", "cart"])
-  },
   methods: {
     createOrder() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-        this.$store
-          .dispatch("order/setOrder", this.order)
-          .then(this.$router.push("/shop"));
+        store.dispatch("order/setOrder", this.order)
+        .then(() => {
+          store.dispatch('cart/refreshCart')
+          return this.showBill = true;
+        })
       }
     },
     createFreshOrder() {
       const id = Math.floor(Math.random() * 1000000);
 
       return {
-        userId: this.$store.state.user.user.id,
+        date: dateFormatter(new Date()),
+        userId: store.state.user.user.id,
         orderId: id,
-        name: this.$store.state.user.user.name,
-        phoneNumber: this.$store.state.user.phone,
+        name: store.state.user.user.name,
+        phoneNumber: store.state.user.user.phone,
         address: {
           street: "",
           country: "",
@@ -186,8 +237,9 @@ export default {
           frontDoor: "",
           building: ""
         },
+        totalPrice: store.getters.['cart/cartTotalPrice'],
         country: "",
-        cart: this.$store.state.cart.cart
+        cart: store.state.cart.cart
       };
     }
   }
@@ -203,25 +255,13 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.error {
-  border: 1px solid red;
-}
 .select {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.cart-list {
-  &__item {
-    display: flex;
-    width: 100%;
-    padding-bottom: 4px;
-    border-bottom: 1px solid black;
-    margin-bottom: 10px;
-    opacity: 0.5;
-  }
-}
+
 .short {
-  max-width: 20%;
+  max-width: 30%;
 }
 .fade-enter-active,
 .fade-leave-active {
@@ -230,5 +270,11 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+.total-price {
+  display: block;
+  opacity: 0.5;
+  font-size: 24px;
+  text-align: right;
 }
 </style>
