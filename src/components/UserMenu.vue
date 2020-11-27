@@ -17,7 +17,7 @@
       </modal>
     </template>
     <router-link
-      tag="div"
+      tag="a"
       :active-class="'link active'"
       class="link"
       v-else

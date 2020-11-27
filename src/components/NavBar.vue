@@ -1,12 +1,12 @@
 <template lang="html">
   <div id="nav">
-    <router-link tag="div" :active-class="'active'" class="link" to="/shop/">
+    <router-link tag="a" :active-class="'active'" class="link" to="/shop/">
       <BaseIcon :name="'shop'" :width="24" :height="24" :iconClass="'menu__icon icon'" />
       <span class="link__text">
         Shop
       </span>
     </router-link>
-    <router-link tag="div" :active-class="'active'" class="link" to="/cart" exact>
+    <router-link tag="a" :active-class="'active'" class="link" to="/cart" exact>
       <BaseIcon :width="24" :height="24" :name="'cart'" :iconClass="'menu__icon icon'" />
       <span class="link__text">
         Cart
@@ -31,21 +31,6 @@
   align-items: center;
   padding: 5px;
   cursor: pointer;
-  &::before {
-    position: absolute;
-    content: "";
-    height: 2px;
-    background: #fa4a0c;
-    bottom: 0;
-    left: 0;
-    right: 100%;
-    border-radius: 4px;
-    opacity: .5;
-  }
-  &:hover::before {
-    right: 0;
-    transition: 0.2s;
-  }
   &:hover {
     opacity: .7;
   }
@@ -53,9 +38,6 @@
     font-size: 20px;
     margin-left: 10px;
   }
-}
-.active::before {
-  right: 0;
 }
 .active .menu__icon {
   opacity: 1;
