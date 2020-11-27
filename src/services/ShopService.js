@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const shopApi = axios.create({
-  baseURL: `http://localhost:3000`,
+  baseURL: `https://my-json-server.typicode.com/eugenekotovx/mock-food-api/`,
   withCredentials: false,
   headers: {
     Accept: "application/json",
