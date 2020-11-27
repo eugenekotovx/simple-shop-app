@@ -73,11 +73,8 @@ export default {
 @media screen and (max-width: 576px) {
   .back-button {
     display: flex;
-    margin-left: 20px;
+    margin-left: 10px;
     padding: 7px 10px;
-    border-radius: 5px;
-    box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
-    opacity: 0.7;
   }
   .arrow__icon-left {
     transform: rotate(180deg);
@@ -92,7 +89,8 @@ export default {
     width: 100%;
     background-color: #f5f5f8;
     padding: 20px 0;
-    justify-content: space-between;
+    justify-content: space-around;
+    border-radius: 20px 20px 0 0;
   }
   .purchase__button {
     margin-left: 40px;

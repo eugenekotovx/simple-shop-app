@@ -103,12 +103,7 @@ export default {
 }
 @media screen and (max-width: 576px) {
   .user {
-    margin-top: 25px;
-    &__avatar {
-      margin-right: 0;
-    }
     &__wrapper {
-      flex-direction: column;
       align-items: center;
     }
   }

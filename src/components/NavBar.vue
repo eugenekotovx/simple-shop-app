@@ -47,6 +47,7 @@
     transition: 0.2s;
   }
   &:hover {
+    opacity: .7;
   }
   &__text {
     font-size: 20px;
@@ -74,6 +75,10 @@
       &__text {
         display: none;
       }
+    }
+    .active > .link__text {
+      display: block;
+      transition: .2s;
     }
    }
 </style>

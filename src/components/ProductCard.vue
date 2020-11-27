@@ -71,7 +71,7 @@ export default {
     margin-bottom: 10px;
     &:hover {
       box-shadow: 5px 30px 60px rgba(57, 57, 57, 0.2);
-      transition: .4s;
+      transition: .2s ease;
     }
   }
   &__description {

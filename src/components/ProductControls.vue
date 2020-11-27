@@ -69,8 +69,7 @@ export default {
   font-size: 20px;
   &:hover {
     opacity: .7;
-    box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 5px;
-    transition: .4s;
+    transition: .1s;
   }
   &__group {
     display: flex;

@@ -25,8 +25,7 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
   &:hover {
     opacity: .7;
-    box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 10px;
-    transition: .4s;
+    transition: .2s;
   }
 }
 .button__text {
