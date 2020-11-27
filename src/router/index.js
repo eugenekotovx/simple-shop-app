@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Shop.vue";
+import Shop from "../views/Shop.vue";
 import store from "@/store/index";
 import ProductsList from "../views/ProductsList";
 import ProductShow from "../views/ProductShow";
@@ -15,24 +15,24 @@ const routes = [
   {
     path: "/shop",
     name: "Shop",
-    component: Home,
+    component: Shop
   },
   {
     path: "/order-create",
     name: "order-create",
-    component: OrderCreate,
+    component: OrderCreate
   },
   {
     path: "/shop/:category",
     name: "products-list",
     component: ProductsList,
-    props: true,
+    props: true
   },
   {
     path: "/user/:id",
     name: "user-show",
     component: UserProfile,
-    props: true,
+    props: true
   },
   {
     path: "/shop/:category/:id",
@@ -45,20 +45,20 @@ const routes = [
         .then(() => {
           next();
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response && error.response.status == 404) {
             next({ name: "404", params: { resource: "product" } });
           } else {
             next({ name: "network-issue" });
           }
         });
-    },
+    }
   },
   {
     path: "/404",
     name: "404",
     component: NotFound,
-    props: true,
+    props: true
   },
   {
     path: "/cart",
@@ -67,23 +67,27 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/CartShow.vue"),
+      import(/* webpackChunkName: "about" */ "../views/CartShow.vue")
   },
   {
     path: "/network-issue",
     name: "network-issue",
-    component: NetworkIssue,
+    component: NetworkIssue
   },
   {
     path: "*",
-    redirect: { name: "404" },
+    redirect: { name: "404" }
   },
+  {
+    path: "/",
+    redirect: { name: "Shop" }
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes,
+  routes
 });
 
 export default router;
